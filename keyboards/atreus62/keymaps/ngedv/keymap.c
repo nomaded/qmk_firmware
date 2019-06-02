@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_APP,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TT_OHDV,
     TT_RST,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,                      KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    TT_QW,
     CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,                      KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
-    KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                      KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_RSFT,
+    LSFT2CP, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                      KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RSFT2CP,
     KC_HOME, KC_END,  KC_LALT, KC_DEL,  KC_BSPC, M_PPDV,  CTL_TAB, GUI_ENT, M_PPDV,  KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
 
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,
     XXXXXXX, KC_F11,  KC_F12,  KC_UP,   XXXXXXX, KC_PGUP,                   KC_GRV,  KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, XXXXXXX,
     CTL_ESC, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSLS,                   KC_SLSH, KC_MINS, KC_UNDS, KC_LPRN, KC_RPRN, KC_ESC, 
-    KC_LSFT, KC_ENT,  KC_HOME, XXXXXXX, KC_END,  KC_PGDN,                   KC_TILD, KC_EQL,  KC_PLUS, KC_PIPE, KC_QUES, KC_RSFT,
+    _______, KC_ENT,  KC_HOME, XXXXXXX, KC_END,  KC_PGDN,                   KC_TILD, KC_EQL,  KC_PLUS, KC_PIPE, KC_QUES, _______,
     XXXXXXX, XXXXXXX, _______, _______, _______, _______, KC_BSLS, KC_SLSH, _______, _______, _______, _______, _______, _______
   ),
 
@@ -125,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,
     XXXXXXX, KC_F11,  KC_F12,  KC_UP,   XXXXXXX, KC_PGUP,                   KC_GRV,  KC_MINS, KC_EQL,  KC_UNDS, KC_PLUS, XXXXXXX,
     CTL_ESC, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSLS,                   KC_LBRC, KC_QUOT, KC_DQUO, KC_LPRN, KC_RPRN, KC_ESC, 
-    KC_LSFT, KC_ENT,  KC_HOME, XXXXXXX, KC_END,  KC_PGDN,                   KC_TILD, KC_RBRC, KC_RCBR, KC_PIPE, KC_LCBR, KC_RSFT,
+    _______, KC_ENT,  KC_HOME, XXXXXXX, KC_END,  KC_PGDN,                   KC_TILD, KC_RBRC, KC_RCBR, KC_PIPE, KC_LCBR, _______,
     XXXXXXX, XXXXXXX, _______, _______, _______, _______, KC_BSLS, KC_LBRC, _______, _______, _______, _______, _______, _______
   ),
 
@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,                     KC_NLCK, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSCR,
     CTL_ESC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
-    KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, KC_RSFT,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
     XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, XXXXXXX, CTL_ENT, KC_PENT, KC_P0,   _______, _______, _______, _______, _______
   ),
 
@@ -174,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_APP,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
     TT_RST,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,                      KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    TT_OHDF,
     CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,                      KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
-    KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                      KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_RSFT,
+    LSFT2CP, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                      KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RSFT2CP,
     KC_HOME, KC_END,  KC_LALT, KC_DEL,  KC_BSPC, LT_SPCF, CTL_TAB, GUI_ENT, LT_BSPF, KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
   ),
 
@@ -236,49 +236,57 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Toggle capslock when pressing both left and right shift keys
     // LSFT2CP
     // RSFT2CP
+    //
     case LSFT2CP:
       if (record->event.pressed) {
 	// Left shift keydown event
-	if (!is_shift_pressed) {
-	  // If is_shift_pressed is false, set to true
-	  is_shift_pressed = true;
-	} else {
-	  // is_shift_pressed is true, send capslock instead
+	//
+	if (is_shift_pressed) {
+	  // is_shift_pressed is true, send capslock
+	  //
 	  register_code(KC_CAPS);
-	  unregister_code(KC_CAPS);
-	  break;
+	} else {
+	  // If is_shift_pressed is false, set to true and send shift
+	  //
+	  is_shift_pressed = true;
+	  register_code(KC_LSFT);
 	}
-	register_code(KC_LSFT);
       } else {
 	// Left shift keyup event
+	//
+	// Set is_shift_pressed to false, and keyup for capslock and shift
+	//
 	is_shift_pressed = false;
+	unregister_code(KC_CAPS);
 	unregister_code(KC_LSFT);
       }
       return false; // Skip all further processing of this key
-      break;
     case RSFT2CP:
       if (record->event.pressed) {
 	// Right shift keydown event
-	if (!is_shift_pressed) {
-	  // If is_shift_pressed is false, set to true
-	  is_shift_pressed = true;
-	} else {
-	  // is_shift_pressed is true, send capslock instead
+	//
+	if (is_shift_pressed) {
+	  // is_shift_pressed is true, send capslock
+	  //
 	  register_code(KC_CAPS);
-	  unregister_code(KC_CAPS);
-	  break;
+	} else {
+	  // If is_shift_pressed is false, set to true and send shift
+	  //
+	  is_shift_pressed = true;
+	  register_code(KC_RSFT);
 	}
-	register_code(KC_RSFT);
       } else {
 	// Right shift keyup event
+	//
+	// Set is_shift_pressed to false, and keyup for capslock and shift
+	//
 	is_shift_pressed = false;
+	unregister_code(KC_CAPS);
 	unregister_code(KC_RSFT);
       }
       return false; // Skip all further processing of this key
-      break;
     default:
       return true; // Process all other keycodes normally
   }
-  return true;
 };
 
