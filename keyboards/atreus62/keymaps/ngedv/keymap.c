@@ -25,10 +25,15 @@
 #define TT_RST TT(_RESET_NUMPAD)
 #define M_PPDV MO(_PUNCTPAD_DV)
 #define M_PPQW MO(_PUNCTPAD_QW)
+#define LT_TBPD LT(_PUNCTPAD_DV, KC_TAB)
+#define LT_ETPD LT(_PUNCTPAD_DV, KC_ENT)
+#define LT_TBPQ LT(_PUNCTPAD_QW, KC_TAB)
+#define LT_ETPQ LT(_PUNCTPAD_QW, KC_ENT)
 #define CTL_ESC CTL_T(KC_ESC)
 #define CTL_TAB CTL_T(KC_TAB)
 #define GUI_ENT GUI_T(KC_ENT)
 #define CTL_ENT CTL_T(KC_ENT)
+#define GUI_TAB GUI_T(KC_TAB)
 #define TT_OHDV TT(_ONEHAND_DV)
 #define TT_OHDF TT(_ONEHAND_FLIP_DV)
 #define M_OHFDV MO(_ONEHAND_FLIP_DV)
@@ -54,8 +59,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |C(Esc)| a A  | o O  | e E  | u U  | i I  |,------.,------.| d D  | h H  | t T  | n N  | s S  | - _  |
    * |------+------+------+------+------+------|| Ctrl || Gui  ||------+------+------+------+------+------|
    * | LSft | ; :  | q Q  | j J  | k K  | x X  ||      ||      || b B  | m M  | w W  | v V  | z Z  | RSft |
-   * |------+------+------+------+------+------|| Tab  || Entr ||------+------+------+------+------+------|
-   * | Home | End  | LAlt | Del  | Bksp | ~L2  |`------'`------'| ~L2  | Spce | Left | Down |  Up  | Rght |
+   * |------+------+------+------+------+------|| Entr || Tab  ||------+------+------+------+------+------|
+   * | Home | End  | LAlt | Del  | Bksp |L2/Tab|`------'`------'|L2/Ent| Spce | Left | Down |  Up  | Rght |
    * `-----------------------------------------'                `-----------------------------------------'
    */
   [_DVORAK] = LAYOUT( /* default, dvorak in keyboard, qwerty in OS */
@@ -63,7 +68,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TT_RST,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,                      KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    TT_QW,
     CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,                      KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
     LSFT2CP, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                      KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RSFT2CP,
+<<<<<<< HEAD
     KC_HOME, KC_END,  KC_LALT, KC_DEL,  KC_BSPC, M_PPDV,  CTL_TAB, GUI_ENT, M_PPDV,  KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+=======
+    KC_HOME, KC_END,  KC_LALT, KC_DEL,  KC_BSPC, LT_TBPD, CTL_ENT, GUI_TAB, LT_ETPD, KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+>>>>>>> Changed the PunctPad layer switch to overload with tab/enter tap keys, and changed the overloaded ctrl/gui keys to reverse the tap keys to enter/tab.
   ),
 
   /* qwerty in keyboard, dvorak in OS
@@ -75,8 +84,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |C(Esc)| a A  | s S  | d D  | f F  | g G  |,------.,------.| h H  | j J  | k K  | l L  | ; :  | ' "  |
    * |------+------+------+------+------+------|| Ctrl || Gui  ||------+------+------+------+------+------|
    * | LSft | z Z  | x X  | c C  | v V  | b B  ||      ||      || n N  | m M  | , <  | . >  | / ?  | RSft |
-   * |------+------+------+------+------+------|| Tab  || Entr ||------+------+------+------+------+------|
-   * | Home | End  | LAlt | Del  | Bksp | ~L3  |`------'`------'| ~L3  | Spce | Left | Down |  Up  | Rght |
+   * |------+------+------+------+------+------|| Entr || Tab  ||------+------+------+------+------+------|
+   * | Home | End  | LAlt | Del  | Bksp |L3/Tab|`------'`------'|L3/Ent| Spce | Left | Down |  Up  | Rght |
    * `-----------------------------------------'                `-----------------------------------------'
    */
   [_QWERTY] = LAYOUT( /* qwerty in keyboard, dvorak in OS */
@@ -84,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TT_RST,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    _______,
     _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_MINS,
     _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
-    _______, _______, _______, _______, _______, M_PPQW,  _______, _______, M_PPQW,  _______, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, LT_TBPQ, _______, _______, LT_ETPQ, _______, _______, _______, _______, _______
   ),
 
   /* punctpad, dvorak in keyboard, qwerty in OS
@@ -97,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
    * | LSft | Entr | Home |      | End  | PgDn ||  \   ||  /   || ~    | =    | +    | |    | ?    | RSft |
    * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
-   * |      |      | LAlt | Del  | Bksp | ~L2  |`------'`------'| ~L2  | Spce | Left | Down |  Up  | Rght |
+   * |      |      | LAlt | Del  | Bksp |L2/Tab|`------'`------'|L2/Ent| Spce | Left | Down |  Up  | Rght |
    * `-----------------------------------------'                `-----------------------------------------'
    */
   [_PUNCTPAD_DV] = LAYOUT( /* punctpad, dvorak in keyboard, qwerty in OS */
@@ -118,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
    * | LSft | Entr | Home |      | End  | PgDn ||  \   ||  [   || ~    | ]    | }    | |    | {    | RSft |
    * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
-   * |      |      | LAlt | Del  | Bksp | ~L3  |`------'`------'| ~L3  | Spce | Left | Down |  Up  | Rght |
+   * |      |      | LAlt | Del  | Bksp |L3/Tab|`------'`------'|L3/Ent| Spce | Left | Down |  Up  | Rght |
    * `-----------------------------------------'                `-----------------------------------------'
    */
   [_PUNCTPAD_QW] = LAYOUT( /* punctpad, qwerty in keyboard, dvorak in OS */
