@@ -11,6 +11,6 @@
 #undef IS_COMMAND
 #define IS_COMMAND() (get_mods() == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT)))
 #undef TAPPING_TERM
-#define TAPPING_TERM 150
+#define TAPPING_TERM 120
 #define PERMISSIVE_HOLD
 
