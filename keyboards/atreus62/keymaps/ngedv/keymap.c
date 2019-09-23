@@ -36,27 +36,27 @@
 #define _ONEHAND_FLIP_DV 6
 
 /* Helpful defines */
-#define TT_QW TT(_QWERTY)
-#define TT_RST TT(_RESET_NUMPAD)
-#define M_PPDV MO(_PUNCTPAD_DV)
-#define M_PPQW MO(_PUNCTPAD_QW)
-#define LT_PDTB LT(_PUNCTPAD_DV, KC_TAB)
-#define LT_PDET LT(_PUNCTPAD_DV, KC_ENT)
-#define LT_PQTB LT(_PUNCTPAD_QW, KC_TAB)
-#define LT_PQET LT(_PUNCTPAD_QW, KC_ENT)
-#define CTL_ESC CTL_T(KC_ESC)
-#define CTL_TAB CTL_T(KC_TAB)
-#define GUI_ENT GUI_T(KC_ENT)
-#define CTL_ENT CTL_T(KC_ENT)
-#define GUI_TAB GUI_T(KC_TAB)
-#define TT_OHDV TT(_ONEHAND_DV)
-#define TT_OHDF TT(_ONEHAND_FLIP_DV)
-#define M_OHFDV MO(_ONEHAND_FLIP_DV)
-#define OS_OHFD OSL(_ONEHAND_FLIP_DV)
-#define LT_OFSP LT(_ONEHAND_FLIP_DV, KC_SPC)
-#define LT_OFBS LT(_ONEHAND_FLIP_DV, KC_BSPC)
-#define LT_OFTB LT(_ONEHAND_FLIP_DV, KC_TAB)
-#define LT_OFET LT(_ONEHAND_FLIP_DV, KC_ENT)
+#define TT_QW TT(_QWERTY)						// Layer Tap Toggle
+#define TT_RST TT(_RESET_NUMPAD)				// Layer Tap Toggle
+#define M_PPDV MO(_PUNCTPAD_DV)					// Momentary activates layer
+#define M_PPQW MO(_PUNCTPAD_QW)					// Momentary activates layer
+#define LT_PDTB LT(_PUNCTPAD_DV, KC_TAB)		// Momentary layer or tap key
+#define LT_PDET LT(_PUNCTPAD_DV, KC_ENT)		// Momentary layer or tap key
+#define LT_PQTB LT(_PUNCTPAD_QW, KC_TAB)		// Momentary layer or tap key
+#define LT_PQET LT(_PUNCTPAD_QW, KC_ENT)		// Momentary layer or tap key
+#define CTL_ESC CTL_T(KC_ESC)					// Hold mod or tap key
+#define CTL_TAB CTL_T(KC_TAB)					// Hold mod or tap key
+#define GUI_ENT GUI_T(KC_ENT)					// Hold mod or tap key
+#define CTL_ENT CTL_T(KC_ENT)					// Hold mod or tap key
+#define GUI_TAB GUI_T(KC_TAB)					// Hold mod or tap key
+#define TT_OHDV TT(_ONEHAND_DV)					// Layer Tap Toggle
+#define TT_OHDF TT(_ONEHAND_FLIP_DV)			// Layer Tap Toggle
+#define M_OHFDV MO(_ONEHAND_FLIP_DV)			// Momentary activates layer
+#define OS_OHFD OSL(_ONEHAND_FLIP_DV)			// One shot layer
+#define LT_OFSP LT(_ONEHAND_FLIP_DV, KC_SPC)	// Momentary layer or tap key
+#define LT_OFBS LT(_ONEHAND_FLIP_DV, KC_BSPC)	// Momentary layer or tap key
+#define LT_OFTB LT(_ONEHAND_FLIP_DV, KC_TAB)	// Momentary layer or tap key
+#define LT_OFET LT(_ONEHAND_FLIP_DV, KC_ENT)	// Momentary layer or tap key
 
 /* defining keycodes for LSft + RSft = CpLk */
 enum my_keycodes {
@@ -74,8 +74,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |C(Esc)| a A  | o O  | e E  | u U  | i I  |,------.,------.| d D  | h H  | t T  | n N  | s S  | - _  |
      * |------+------+------+------+------+------|| Ctrl || Gui  ||------+------+------+------+------+------|
      * | LSft | ; :  | q Q  | j J  | k K  | x X  ||      ||      || b B  | m M  | w W  | v V  | z Z  | RSft |
-     * |------+------+------+------+------+------|| Entr || Tab  ||------+------+------+------+------+------|
-     * | Home | End  | LAlt | Del  | Bksp |L2/Tab|`------'`------'|L2/Ent| Spce | Left | Down |  Up  | Rght |
+     * |------+------+------+------+------+------|| Tab  || Entr ||------+------+------+------+------+------|
+     * | Home | End  | LAlt | Del  | Bksp | ~L2  |`------'`------'| ~L2  | Spce | Left | Down |  Up  | Rght |
      * `-----------------------------------------'                `-----------------------------------------'
      */
     [_DVORAK] = LAYOUT( /* default, dvorak in keyboard, qwerty in OS */
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TT_RST,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,                      KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    TT_QW,
         CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,                      KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
         LSFT2CP, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                      KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RSFT2CP,
-        KC_HOME, KC_END,  KC_LALT, KC_DEL,  KC_BSPC, LT_PDTB, CTL_ENT, GUI_TAB, LT_PDET, KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+        KC_HOME, KC_END,  KC_LALT, KC_DEL,  KC_BSPC, M_PPDV,  CTL_TAB, GUI_ENT, M_PPDV,  KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
     ),
   
     /* qwerty in keyboard, dvorak in OS
@@ -95,8 +95,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |C(Esc)| a A  | s S  | d D  | f F  | g G  |,------.,------.| h H  | j J  | k K  | l L  | ; :  | ' "  |
      * |------+------+------+------+------+------|| Ctrl || Gui  ||------+------+------+------+------+------|
      * | LSft | z Z  | x X  | c C  | v V  | b B  ||      ||      || n N  | m M  | , <  | . >  | / ?  | RSft |
-     * |------+------+------+------+------+------|| Entr || Tab  ||------+------+------+------+------+------|
-     * | Home | End  | LAlt | Del  | Bksp |L3/Tab|`------'`------'|L3/Ent| Spce | Left | Down |  Up  | Rght |
+     * |------+------+------+------+------+------|| Tab  || Entr ||------+------+------+------+------+------|
+     * | Home | End  | LAlt | Del  | Bksp | ~L3  |`------'`------'| ~L3  | Spce | Left | Down |  Up  | Rght |
      * `-----------------------------------------'                `-----------------------------------------'
      */
     [_QWERTY] = LAYOUT( /* qwerty in keyboard, dvorak in OS */
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TT_RST,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    _______,
         _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_MINS,
         _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
-        _______, _______, _______, _______, _______, LT_PQTB, _______, _______, LT_PQET, _______, _______, _______, _______, _______
+        _______, _______, _______, _______, _______, M_PPQW,  _______, _______, M_PPQW,  _______, _______, _______, _______, _______
     ),
   
     /* punctpad, dvorak in keyboard, qwerty in OS
@@ -115,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|                |------+------+------+------+------+------|
      * |C(Esc)| Home | Left | Down | Rght | \    |,------.,------.| /    | -    | _    | (    | )    | Esc  |
      * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
-     * | LSft | Entr | Home |      | End  | PgDn ||  \   ||  /   || ~    | =    | +    | |    | ?    | RSft |
+     * | LSft | Entr | Home |      | End  | PgDn ||      ||      || ~    | =    | +    | |    | ?    | RSft |
      * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
      * |      |      | LAlt | Del  | Bksp |L2/Tab|`------'`------'|L2/Ent| Spce | Left | Down |  Up  | Rght |
      * `-----------------------------------------'                `-----------------------------------------'
@@ -125,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_F11,  KC_F12,  KC_UP,   XXXXXXX, KC_PGUP,                   KC_GRV,  KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, XXXXXXX,
         CTL_ESC, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSLS,                   KC_SLSH, KC_MINS, KC_UNDS, KC_LPRN, KC_RPRN, KC_ESC, 
         _______, KC_ENT,  KC_HOME, XXXXXXX, KC_END,  KC_PGDN,                   KC_TILD, KC_EQL,  KC_PLUS, KC_PIPE, KC_QUES, _______,
-        XXXXXXX, XXXXXXX, _______, _______, _______, _______, KC_BSLS, KC_SLSH, _______, _______, _______, _______, _______, _______
+        XXXXXXX, XXXXXXX, _______, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______
     ),
   
     /* punctpad, qwerty in keyboard, dvorak in OS
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|                |------+------+------+------+------+------|
      * |C(Esc)| Home | Left | Down | Rght | \    |,------.,------.| [    | '    | "    | (    | )    | Esc  |
      * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
-     * | LSft | Entr | Home |      | End  | PgDn ||  \   ||  [   || ~    | ]    | }    | |    | {    | RSft |
+     * | LSft | Entr | Home |      | End  | PgDn ||      ||      || ~    | ]    | }    | |    | {    | RSft |
      * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
      * |      |      | LAlt | Del  | Bksp |L3/Tab|`------'`------'|L3/Ent| Spce | Left | Down |  Up  | Rght |
      * `-----------------------------------------'                `-----------------------------------------'
@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_F11,  KC_F12,  KC_UP,   XXXXXXX, KC_PGUP,                   KC_GRV,  KC_MINS, KC_EQL,  KC_UNDS, KC_PLUS, XXXXXXX,
         CTL_ESC, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSLS,                   KC_LBRC, KC_QUOT, KC_DQUO, KC_LPRN, KC_RPRN, KC_ESC, 
         _______, KC_ENT,  KC_HOME, XXXXXXX, KC_END,  KC_PGDN,                   KC_TILD, KC_RBRC, KC_RCBR, KC_PIPE, KC_LCBR, _______,
-        XXXXXXX, XXXXXXX, _______, _______, _______, _______, KC_BSLS, KC_LBRC, _______, _______, _______, _______, _______, _______
+        XXXXXXX, XXXXXXX, _______, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______
     ),
   
     /* reset, and numpad
