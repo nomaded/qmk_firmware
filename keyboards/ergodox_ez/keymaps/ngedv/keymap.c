@@ -41,27 +41,27 @@
 //#define _ONEHAND_FLIP_DV 6
 
 /* Helpful defines */
-#define TT_QW TT(_QWERTY)                        // Layer Tap Toggle
+#define TT_QW TT(_QWERTY)                       // Layer Tap Toggle
 #define TT_RST TT(_RESET_NUMPAD)                // Layer Tap Toggle
-#define M_PPDV MO(_PUNCTPAD_DV)                    // Momentary activates layer
-#define M_PPQW MO(_PUNCTPAD_QW)                    // Momentary activates layer
+#define M_PPDV MO(_PUNCTPAD_DV)                 // Momentary activates layer
+#define M_PPQW MO(_PUNCTPAD_QW)                 // Momentary activates layer
 #define LT_PDTB LT(_PUNCTPAD_DV, KC_TAB)        // Momentary layer or tap key
 #define LT_PDET LT(_PUNCTPAD_DV, KC_ENT)        // Momentary layer or tap key
 #define LT_PQTB LT(_PUNCTPAD_QW, KC_TAB)        // Momentary layer or tap key
 #define LT_PQET LT(_PUNCTPAD_QW, KC_ENT)        // Momentary layer or tap key
-#define CTL_ESC CTL_T(KC_ESC)                    // Hold mod or tap key
-#define CTL_TAB CTL_T(KC_TAB)                    // Hold mod or tap key
-#define GUI_ENT GUI_T(KC_ENT)                    // Hold mod or tap key
-#define CTL_ENT CTL_T(KC_ENT)                    // Hold mod or tap key
-#define GUI_TAB GUI_T(KC_TAB)                    // Hold mod or tap key
-//#define TT_OHDV TT(_ONEHAND_DV)                    // Layer Tap Toggle
-//#define TT_OHDF TT(_ONEHAND_FLIP_DV)            // Layer Tap Toggle
-//#define M_OHFDV MO(_ONEHAND_FLIP_DV)            // Momentary activates layer
-//#define OS_OHFD OSL(_ONEHAND_FLIP_DV)            // One shot layer
-//#define LT_OFSP LT(_ONEHAND_FLIP_DV, KC_SPC)    // Momentary layer or tap key
-//#define LT_OFBS LT(_ONEHAND_FLIP_DV, KC_BSPC)    // Momentary layer or tap key
-//#define LT_OFTB LT(_ONEHAND_FLIP_DV, KC_TAB)    // Momentary layer or tap key
-//#define LT_OFET LT(_ONEHAND_FLIP_DV, KC_ENT)    // Momentary layer or tap key
+#define CTL_ESC CTL_T(KC_ESC)                   // Hold mod or tap key
+#define CTL_TAB CTL_T(KC_TAB)                   // Hold mod or tap key
+#define GUI_ENT GUI_T(KC_ENT)                   // Hold mod or tap key
+#define CTL_ENT CTL_T(KC_ENT)                   // Hold mod or tap key
+#define GUI_TAB GUI_T(KC_TAB)                   // Hold mod or tap key
+//#define TT_OHDV TT(_ONEHAND_DV)               // Layer Tap Toggle
+//#define TT_OHDF TT(_ONEHAND_FLIP_DV)          // Layer Tap Toggle
+//#define M_OHFDV MO(_ONEHAND_FLIP_DV)          // Momentary activates layer
+//#define OS_OHFD OSL(_ONEHAND_FLIP_DV)         // One shot layer
+//#define LT_OFSP LT(_ONEHAND_FLIP_DV, KC_SPC)  // Momentary layer or tap key
+//#define LT_OFBS LT(_ONEHAND_FLIP_DV, KC_BSPC) // Momentary layer or tap key
+//#define LT_OFTB LT(_ONEHAND_FLIP_DV, KC_TAB)  // Momentary layer or tap key
+//#define LT_OFET LT(_ONEHAND_FLIP_DV, KC_ENT)  // Momentary layer or tap key
 
 /* defining keycodes for LSft + RSft = CpLk */
 enum my_keycodes {
