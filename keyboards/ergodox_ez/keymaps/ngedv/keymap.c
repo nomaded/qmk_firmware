@@ -310,24 +310,14 @@ void matrix_scan_user(void) {
             break;
         default:
             // none - Dvorak layer
-            // bottom LED - reserved for CapsLock
+            // bottom LED - reserved for capslock
             break;
     }
 
-    // Caps lock
+    // bottom LED - capslock
     if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
         ergodox_right_led_3_on();
     }
-    /*
-    switch (keycode) {
-        case KC_CAPS:
-            if (record->event.pressed) {
-                ergodox_right_led_3_on();
-            } else {
-                ergodox_right_led_3_off();
-            }
-    }
-    */
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -344,8 +334,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     return MACRO_NONE;
 };
 
-/* Initializing variable needed for shift 2 capslock */
-bool is_shift_pressed = false;
+/* Initializing variables needed for shift 2 capslock */
+bool is_lsft_pressed = false;    // left shift
+bool is_rsft_pressed = false;    // right shift
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     /* Toggle capslock when pressing both left and right shift keys
@@ -355,96 +346,51 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LSFT2CP:
             if (record->event.pressed) {
-                if (is_shift_pressed) {
-                    /* is_shift_pressed is true, send capslock,
-                     * turn on LED 3
-                     */
+                if (is_rsft_pressed) {
+                    /* If is_rsft_pressed is true, send capslock */
                     register_code(KC_CAPS);
-                    //ergodox_right_led_3_on();
                 } else {
-                    /* If is_shift_pressed is false, set to true and send
-                     * shift
+                    /* When left shift key is pressed, if is_rsft_pressed
+                     * is false, set is_lsft_pressed to true and send shift
                      */
-                    is_shift_pressed = true;
+                    is_lsft_pressed = true;
                     register_code(KC_LSFT);
                 }
             } else {
-                /* Set is_shift_pressed to false, and keyup for capslock and
-                 * shift, turn off LED 3
+                /* When left shift key is released, set is_lsft_pressed
+                 * to false, and keyup for capslock and shift
                  */
-                is_shift_pressed = false;
+                is_lsft_pressed = false;
                 unregister_code(KC_CAPS);
-                //ergodox_right_led_3_off();
                 unregister_code(KC_LSFT);
             } 
             /* Skip all further processing of this key */
             return false;
         case RSFT2CP:
             if (record->event.pressed) {
-                if (is_shift_pressed) {
-                    /* is_shift_pressed is true, send capslock,
-                     * turn on LED 3
-                     */
+                if (is_lsft_pressed) {
+                    /* If is_lsft_pressed is true, send capslock */
                     register_code(KC_CAPS);
-                    //ergodox_right_led_3_on();
                 } else {
-                    /* If is_shift_pressed is false, set to true and send
-                     * shift
+                    /* When right shift key is pressed, if is_lsft_pressed
+                     * is false, set is_rsft_pressed to true and send shift
                      */
-                    is_shift_pressed = true;
+                    is_rsft_pressed = true;
                     register_code(KC_RSFT);
                 }
             } else {
-                /* Set is_shift_pressed to false, and keyup for capslock and
-                 * shift, turn off LED 3
+                /* When right shift key is released, set is_rsft_pressed
+                 * to false, and keyup for capslock and shift
                  */
-                is_shift_pressed = false;
+                is_rsft_pressed = false;
                 unregister_code(KC_CAPS);
-                //ergodox_right_led_3_off();
                 unregister_code(KC_RSFT);
             }
             /* Skip all further processing of this key */
             return false; 
-        /*
-        case KC_CAPS:
-            if (record->event.pressed) {
-                ergodox_right_led_3_on();
-            } else {
-                ergodox_right_led_3_off();
-            }
-        */
         default: 
             /* Process all other keycodes normally */
             return true;
     }
 };
-
-//bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//  switch (keycode) {
-//    case QWERTY:
-//    return false
-//    break;
-//    case LOWER:
-//      if (record->event.pressed) {
-//        layer_on(_LOWER);
-//        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-//      } else {
-//        layer_off(_LOWER);
-//        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-//      }
-//      return false;
-//      break;
-//    case RAISE:
-//      if (record->event.pressed) {
-//        layer_on(_RAISE);
-//        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-//      } else {
-//        layer_off(_RAISE);
-//        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-//      }
-//      return false;
-//      break;
-//  }
-//  return true;
-//}
 
