@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
      * | LSft | Entr | Home |      | End  | PgDn ||      ||      || ~    | =    | +    | |    | ?    | RSft |
      * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
-     * |      |      | LAlt | Del  | Bksp |L2/Tab|`------'`------'|L2/Ent| Spce | Left | Down |  Up  | Rght |
+     * |      |      | LAlt | Del  | Bksp | ~L2  |`------'`------'| ~L2  | Spce | Left | Down |  Up  | Rght |
      * `-----------------------------------------'                `-----------------------------------------'
      */
     [_PUNCTPAD_DV] = LAYOUT( /* punctpad, dvorak in keyboard, qwerty in OS */
@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
      * | LSft | Entr | Home |      | End  | PgDn ||      ||      || ~    | ]    | }    | |    | {    | RSft |
      * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
-     * |      |      | LAlt | Del  | Bksp |L3/Tab|`------'`------'|L3/Ent| Spce | Left | Down |  Up  | Rght |
+     * |      |      | LAlt | Del  | Bksp | ~L3  |`------'`------'| ~L3  | Spce | Left | Down |  Up  | Rght |
      * `-----------------------------------------'                `-----------------------------------------'
      */
     [_PUNCTPAD_QW] = LAYOUT( /* punctpad, qwerty in keyboard, dvorak in OS */
