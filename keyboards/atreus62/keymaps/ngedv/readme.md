@@ -12,8 +12,6 @@ the OS, such as with laptops.
 There are a couple experimental "one-handed" layers that are meant to provide
 a FrogPad-like chording typing experience.
 
-Capslock can be toggled by hitting both shift keys at the same time.
-
 ### Layer 0, Default, Dvorak in keyboard, Qwerty in OS
 
     ,-----------------------------------------.                ,-----------------------------------------.
