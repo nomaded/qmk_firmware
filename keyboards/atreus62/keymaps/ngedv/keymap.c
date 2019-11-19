@@ -237,47 +237,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   */
 };
 
-/* Initializing variable needed for shift 2 capslock */
-bool is_shift_pressed = false;
-
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     // MACRODOWN only works in this function
     switch (id) {
-  	case 0:
-    	    if (record->event.pressed) {
-      		register_code(KC_RSFT);
-    	    }
-    	    else {
-      		unregister_code(KC_RSFT);
-    	    }
-    	    break;
+        case 0:
+            if (record->event.pressed) {
+                register_code(KC_RSFT);
+            }
+            else {
+                unregister_code(KC_RSFT);
+            }
+            break;
     }
     return MACRO_NONE;
 };
 
+/* Initializing variables needed for shift 2 capslock */
+bool is_lsft_pressed = false;    // left shift
+bool is_rsft_pressed = false;    // right shift
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    /* Toggle capslock when pressing both left and right shift keys
+     * LSFT2CP
+     * RSFT2CP
+     */
     switch (keycode) {
-        /* Toggle capslock when pressing both left and right shift keys
-         * LSFT2CP
-         * RSFT2CP
-         */
         case LSFT2CP:
             if (record->event.pressed) {
-                if (is_shift_pressed) {
-                    /* is_shift_pressed is true, send capslock */
+                if (is_rsft_pressed) {
+                    /* If is_rsft_pressed is true, send capslock */
                     register_code(KC_CAPS);
                 } else {
-                    /* If is_shift_pressed is false, set to true and send
-                     * shift
+                    /* When left shift key is pressed, if is_rsft_pressed
+                     * is false, set is_lsft_pressed to true and send shift
                      */
-                    is_shift_pressed = true;
+                    is_lsft_pressed = true;
                     register_code(KC_LSFT);
                 }
             } else {
-                /* Set is_shift_pressed to false, and keyup for capslock and
-                 * shift
+                /* When left shift key is released, set is_lsft_pressed
+                 * to false, and keyup for capslock and shift
                  */
-                is_shift_pressed = false;
+                is_lsft_pressed = false;
                 unregister_code(KC_CAPS);
                 unregister_code(KC_LSFT);
             } 
@@ -285,21 +286,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case RSFT2CP:
             if (record->event.pressed) {
-                if (is_shift_pressed) {
-                    /* is_shift_pressed is true, send capslock */
+                if (is_lsft_pressed) {
+                    /* If is_lsft_pressed is true, send capslock */
                     register_code(KC_CAPS);
                 } else {
-                    /* If is_shift_pressed is false, set to true and send
-                     * shift
+                    /* When right shift key is pressed, if is_lsft_pressed
+                     * is false, set is_rsft_pressed to true and send shift
                      */
-                    is_shift_pressed = true;
+                    is_rsft_pressed = true;
                     register_code(KC_RSFT);
                 }
             } else {
-                /* Set is_shift_pressed to false, and keyup for capslock and
-                 * shift
+                /* When right shift key is released, set is_rsft_pressed
+                 * to false, and keyup for capslock and shift
                  */
-                is_shift_pressed = false;
+                is_rsft_pressed = false;
                 unregister_code(KC_CAPS);
                 unregister_code(KC_RSFT);
             }
