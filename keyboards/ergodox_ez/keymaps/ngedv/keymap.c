@@ -41,27 +41,27 @@
 //#define _ONEHAND_FLIP_DV 6
 
 /* Helpful defines */
-#define TT_QW TT(_QWERTY)						// Layer Tap Toggle
-#define TT_RST TT(_RESET_NUMPAD)				// Layer Tap Toggle
-#define M_PPDV MO(_PUNCTPAD_DV)					// Momentary activates layer
-#define M_PPQW MO(_PUNCTPAD_QW)					// Momentary activates layer
-#define LT_PDTB LT(_PUNCTPAD_DV, KC_TAB)		// Momentary layer or tap key
-#define LT_PDET LT(_PUNCTPAD_DV, KC_ENT)		// Momentary layer or tap key
-#define LT_PQTB LT(_PUNCTPAD_QW, KC_TAB)		// Momentary layer or tap key
-#define LT_PQET LT(_PUNCTPAD_QW, KC_ENT)		// Momentary layer or tap key
-#define CTL_ESC CTL_T(KC_ESC)					// Hold mod or tap key
-#define CTL_TAB CTL_T(KC_TAB)					// Hold mod or tap key
-#define GUI_ENT GUI_T(KC_ENT)					// Hold mod or tap key
-#define CTL_ENT CTL_T(KC_ENT)					// Hold mod or tap key
-#define GUI_TAB GUI_T(KC_TAB)					// Hold mod or tap key
-//#define TT_OHDV TT(_ONEHAND_DV)					// Layer Tap Toggle
-//#define TT_OHDF TT(_ONEHAND_FLIP_DV)			// Layer Tap Toggle
-//#define M_OHFDV MO(_ONEHAND_FLIP_DV)			// Momentary activates layer
-//#define OS_OHFD OSL(_ONEHAND_FLIP_DV)			// One shot layer
-//#define LT_OFSP LT(_ONEHAND_FLIP_DV, KC_SPC)	// Momentary layer or tap key
-//#define LT_OFBS LT(_ONEHAND_FLIP_DV, KC_BSPC)	// Momentary layer or tap key
-//#define LT_OFTB LT(_ONEHAND_FLIP_DV, KC_TAB)	// Momentary layer or tap key
-//#define LT_OFET LT(_ONEHAND_FLIP_DV, KC_ENT)	// Momentary layer or tap key
+#define TT_QW TT(_QWERTY)                        // Layer Tap Toggle
+#define TT_RST TT(_RESET_NUMPAD)                // Layer Tap Toggle
+#define M_PPDV MO(_PUNCTPAD_DV)                    // Momentary activates layer
+#define M_PPQW MO(_PUNCTPAD_QW)                    // Momentary activates layer
+#define LT_PDTB LT(_PUNCTPAD_DV, KC_TAB)        // Momentary layer or tap key
+#define LT_PDET LT(_PUNCTPAD_DV, KC_ENT)        // Momentary layer or tap key
+#define LT_PQTB LT(_PUNCTPAD_QW, KC_TAB)        // Momentary layer or tap key
+#define LT_PQET LT(_PUNCTPAD_QW, KC_ENT)        // Momentary layer or tap key
+#define CTL_ESC CTL_T(KC_ESC)                    // Hold mod or tap key
+#define CTL_TAB CTL_T(KC_TAB)                    // Hold mod or tap key
+#define GUI_ENT GUI_T(KC_ENT)                    // Hold mod or tap key
+#define CTL_ENT CTL_T(KC_ENT)                    // Hold mod or tap key
+#define GUI_TAB GUI_T(KC_TAB)                    // Hold mod or tap key
+//#define TT_OHDV TT(_ONEHAND_DV)                    // Layer Tap Toggle
+//#define TT_OHDF TT(_ONEHAND_FLIP_DV)            // Layer Tap Toggle
+//#define M_OHFDV MO(_ONEHAND_FLIP_DV)            // Momentary activates layer
+//#define OS_OHFD OSL(_ONEHAND_FLIP_DV)            // One shot layer
+//#define LT_OFSP LT(_ONEHAND_FLIP_DV, KC_SPC)    // Momentary layer or tap key
+//#define LT_OFBS LT(_ONEHAND_FLIP_DV, KC_BSPC)    // Momentary layer or tap key
+//#define LT_OFTB LT(_ONEHAND_FLIP_DV, KC_TAB)    // Momentary layer or tap key
+//#define LT_OFET LT(_ONEHAND_FLIP_DV, KC_ENT)    // Momentary layer or tap key
 
 /* defining keycodes for LSft + RSft = CpLk */
 enum my_keycodes {
@@ -71,7 +71,7 @@ enum my_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* default, dvorak in keyboard, qwerty in OS
-	 * ,--------------------------------------------------.                ,--------------------------------------------------.
+     * ,--------------------------------------------------.                ,--------------------------------------------------.
      * |  \ |   | 1 !  | 2 @  | 3 #  | 4 $  | 5 %  | ` ~  |                | App  | 6 ^  | 7 &  | 8 *  | 9 (  | 0 )  |  = +   |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
      * | Tab    | ' "  | , <  | . >  | p P  | y Y  | Esc  |                | Esc  | f F  | g G  | c C  | r R  | l L  |  / ?   |
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                      |      | Tab  |G(Ent)|  |C(Tab)| Entr |      |
      *                                      `--------------------'  `--------------------'
      */
-	[_DVORAK] = LAYOUT_ergodox(  /* default, dvorak in keyboard, qwerty in OS */
+    [_DVORAK] = LAYOUT_ergodox(  /* default, dvorak in keyboard, qwerty in OS */
         // left hand
         KC_BSLS, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_GRV,
         KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_ESC,
@@ -112,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /* qwerty in keyboard, dvorak in OS; turn on LED 2
-	 * ,--------------------------------------------------.                ,--------------------------------------------------.
+     * ,--------------------------------------------------.                ,--------------------------------------------------.
      * |  \ |   | 1 !  | 2 @  | 3 #  | 4 $  | 5 %  | ` ~  |                | App  | 6 ^  | 7 &  | 8 *  | 9 (  | 0 )  |  ] }   |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
      * | Tab    | q Q  | w W  | e E  | r R  | t T  | Esc  |                | Esc  | y Y  | u U  | i I  | o O  | p P  |  [ {   |
@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                      |      | Tab  |G(Ent)|  |C(Tab)| Entr |      |
      *                                      `--------------------'  `--------------------'
      */
-	[_QWERTY] = LAYOUT_ergodox(  /* qwerty in keyboard, dvorak in OS; turn on LED 2 */
+    [_QWERTY] = LAYOUT_ergodox(  /* qwerty in keyboard, dvorak in OS; turn on LED 2 */
         // left hand
         _______, _______, _______, _______, _______, _______, _______,
         _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    _______,
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /* punctpad, dvorak in keyboard, qwerty in OS; turn on LED 1
-	 * ,--------------------------------------------------.                ,--------------------------------------------------.
+     * ,--------------------------------------------------.                ,--------------------------------------------------.
      * |        | F1   | F2   | F3   | F4   | F5   | LShf |                |      | F6   | F7   | F8   | F9   | F10  |        |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
      * |        | F11  | F12  | Up   |      | PgUp | Esc  |                | Esc  | `    | [    | ]    | {    | }    |        |
@@ -172,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                      |      |      |      |  |      |      |      |
      *                                      `--------------------'  `--------------------'
      */
-	[_PUNCTPAD_DV] = LAYOUT_ergodox(  /* punctpad, dvorak in keyboard, qwerty in OS; turn on LED 1 */
+    [_PUNCTPAD_DV] = LAYOUT_ergodox(  /* punctpad, dvorak in keyboard, qwerty in OS; turn on LED 1 */
         // left hand
         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_LSFT,
         XXXXXXX, KC_F11,  KC_F12,  KC_UP,   XXXXXXX, KC_PGUP, KC_ESC,
@@ -194,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     /* punctpad, qwerty in keyboard, dvorak in OS; turn on LED 1 & 2
-	 * ,--------------------------------------------------.                ,--------------------------------------------------.
+     * ,--------------------------------------------------.                ,--------------------------------------------------.
      * |        | F1   | F2   | F3   | F4   | F5   | LShf |                |      | F6   | F7   | F8   | F9   | F10  |        |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
      * |        | F11  | F12  | Up   |      | PgUp | Esc  |                | Esc  | `    | -    | =    | _    | +    |        |
@@ -213,7 +213,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                      |      |      |      |  |      |      |      |
      *                                      `--------------------'  `--------------------'
      */
-	[_PUNCTPAD_QW] = LAYOUT_ergodox(  /* punctpad, qwerty in keyboard, dvorak in OS; turn on LED 1 & 2 */
+    [_PUNCTPAD_QW] = LAYOUT_ergodox(  /* punctpad, qwerty in keyboard, dvorak in OS; turn on LED 1 & 2 */
         // left hand
         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_LSFT,
         XXXXXXX, KC_F11,  KC_F12,  KC_UP,   XXXXXXX, KC_PGUP, KC_ESC,
@@ -235,7 +235,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
      /* reset, and numpad; turn on teensy LED
-	 * ,--------------------------------------------------.                ,--------------------------------------------------.
+     * ,--------------------------------------------------.                ,--------------------------------------------------.
      * |        |      |      |      |      |      | Rst  |                | NmLk |      |      | Np / | Np * | Np - | ScrLk  |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
      * |        |      |      |      |      |      |      |                |      |      | Np 7 | Np 8 | Np 9 | Np + | PrtScn |
@@ -254,7 +254,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                      |      | Ent  |      |  |      |      |      |
      *                                      `--------------------'  `--------------------'
      */
-	[_RESET_NUMPAD] = LAYOUT_ergodox(  /* reset, and numpad; turn on teensy LED */
+    [_RESET_NUMPAD] = LAYOUT_ergodox(  /* reset, and numpad; turn on teensy LED */
         // left hand
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -292,12 +292,12 @@ void matrix_scan_user(void) {
     ergodox_right_led_3_off();
     switch (layer) {
         case _QWERTY:
-			// middle LED - Qwerty layer
-            ergodox_right_led_2_on();
+            // top LED - Qwerty layer
+            ergodox_right_led_1_on();
             break;
         case _PUNCTPAD_DV:
-            // top LED - Dvorak & Pad layer
-            ergodox_right_led_1_on();
+            // middle LED - Dvorak & Pad layer
+            ergodox_right_led_2_on();
             break;
         case _PUNCTPAD_QW:
             // top & middle LEDs - Qwerty & Pad layer
@@ -314,34 +314,34 @@ void matrix_scan_user(void) {
             break;
     }
 
-	// Caps lock
-	if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
-    	ergodox_right_led_3_on();
-	}
-	/*
-	switch (keycode) {
-		case KC_CAPS:
-			if (record->event.pressed) {
-				ergodox_right_led_3_on();
-			} else {
-				ergodox_right_led_3_off();
-			}
-	}
-	*/
+    // Caps lock
+    if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
+        ergodox_right_led_3_on();
+    }
+    /*
+    switch (keycode) {
+        case KC_CAPS:
+            if (record->event.pressed) {
+                ergodox_right_led_3_on();
+            } else {
+                ergodox_right_led_3_off();
+            }
+    }
+    */
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
-	// MACRODOWN only works in this function
-	switch(id) {
-		case 0:
-			if (record->event.pressed) {
-				register_code(KC_RSFT);
-			} else {
-				unregister_code(KC_RSFT);
-			}
-			break;
-	}
-	return MACRO_NONE;
+    // MACRODOWN only works in this function
+    switch(id) {
+        case 0:
+            if (record->event.pressed) {
+                register_code(KC_RSFT);
+            } else {
+                unregister_code(KC_RSFT);
+            }
+            break;
+    }
+    return MACRO_NONE;
 };
 
 /* Initializing variable needed for shift 2 capslock */
@@ -357,10 +357,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 if (is_shift_pressed) {
                     /* is_shift_pressed is true, send capslock,
-					 * turn on LED 3
-					 */
+                     * turn on LED 3
+                     */
                     register_code(KC_CAPS);
-					//ergodox_right_led_3_on();
+                    //ergodox_right_led_3_on();
                 } else {
                     /* If is_shift_pressed is false, set to true and send
                      * shift
@@ -374,7 +374,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                  */
                 is_shift_pressed = false;
                 unregister_code(KC_CAPS);
-				//ergodox_right_led_3_off();
+                //ergodox_right_led_3_off();
                 unregister_code(KC_LSFT);
             } 
             /* Skip all further processing of this key */
@@ -383,10 +383,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 if (is_shift_pressed) {
                     /* is_shift_pressed is true, send capslock,
-					 * turn on LED 3
-					 */
+                     * turn on LED 3
+                     */
                     register_code(KC_CAPS);
-					//ergodox_right_led_3_on();
+                    //ergodox_right_led_3_on();
                 } else {
                     /* If is_shift_pressed is false, set to true and send
                      * shift
@@ -400,20 +400,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                  */
                 is_shift_pressed = false;
                 unregister_code(KC_CAPS);
-				//ergodox_right_led_3_off();
+                //ergodox_right_led_3_off();
                 unregister_code(KC_RSFT);
             }
             /* Skip all further processing of this key */
             return false; 
-		/*
-		case KC_CAPS:
-			if (record->event.pressed) {
-				ergodox_right_led_3_on();
-			} else {
-				ergodox_right_led_3_off();
-			}
-		*/
-		default: 
+        /*
+        case KC_CAPS:
+            if (record->event.pressed) {
+                ergodox_right_led_3_on();
+            } else {
+                ergodox_right_led_3_off();
+            }
+        */
+        default: 
             /* Process all other keycodes normally */
             return true;
     }
