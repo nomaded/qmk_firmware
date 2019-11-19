@@ -19,7 +19,8 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
  *  You can use _______ in place for KC_TRNS (transparent)   *
  *  Or you can use XXXXXXX for KC_NO (NOOP)                  *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
 
 /* Each layer gets a name for readability, which is then used in the keymap 
  * matrix below. The underscores don't mean anything - you can have a layer 
@@ -32,31 +33,31 @@
 #define _PUNCTPAD_DV 2
 #define _PUNCTPAD_QW 3
 #define _RESET_NUMPAD 4
-#define _ONEHAND_DV 5
-#define _ONEHAND_FLIP_DV 6
+//#define _ONEHAND_DV 5
+//#define _ONEHAND_FLIP_DV 6
 
 /* Helpful defines */
-#define TT_QW TT(_QWERTY)						// Layer Tap Toggle
-#define TT_RST TT(_RESET_NUMPAD)				// Layer Tap Toggle
-#define M_PPDV MO(_PUNCTPAD_DV)					// Momentary activates layer
-#define M_PPQW MO(_PUNCTPAD_QW)					// Momentary activates layer
-#define LT_PDTB LT(_PUNCTPAD_DV, KC_TAB)		// Momentary layer or tap key
-#define LT_PDET LT(_PUNCTPAD_DV, KC_ENT)		// Momentary layer or tap key
-#define LT_PQTB LT(_PUNCTPAD_QW, KC_TAB)		// Momentary layer or tap key
-#define LT_PQET LT(_PUNCTPAD_QW, KC_ENT)		// Momentary layer or tap key
-#define CTL_ESC CTL_T(KC_ESC)					// Hold mod or tap key
-#define CTL_TAB CTL_T(KC_TAB)					// Hold mod or tap key
-#define GUI_ENT GUI_T(KC_ENT)					// Hold mod or tap key
-#define CTL_ENT CTL_T(KC_ENT)					// Hold mod or tap key
-#define GUI_TAB GUI_T(KC_TAB)					// Hold mod or tap key
-#define TT_OHDV TT(_ONEHAND_DV)					// Layer Tap Toggle
-#define TT_OHDF TT(_ONEHAND_FLIP_DV)			// Layer Tap Toggle
-#define M_OHFDV MO(_ONEHAND_FLIP_DV)			// Momentary activates layer
-#define OS_OHFD OSL(_ONEHAND_FLIP_DV)			// One shot layer
-#define LT_OFSP LT(_ONEHAND_FLIP_DV, KC_SPC)	// Momentary layer or tap key
-#define LT_OFBS LT(_ONEHAND_FLIP_DV, KC_BSPC)	// Momentary layer or tap key
-#define LT_OFTB LT(_ONEHAND_FLIP_DV, KC_TAB)	// Momentary layer or tap key
-#define LT_OFET LT(_ONEHAND_FLIP_DV, KC_ENT)	// Momentary layer or tap key
+#define TT_QW TT(_QWERTY)                       // Layer Tap Toggle
+#define TT_RST TT(_RESET_NUMPAD)                // Layer Tap Toggle
+#define M_PPDV MO(_PUNCTPAD_DV)                 // Momentary activates layer
+#define M_PPQW MO(_PUNCTPAD_QW)                 // Momentary activates layer
+#define LT_PDTB LT(_PUNCTPAD_DV, KC_TAB)        // Momentary layer or tap key
+#define LT_PDET LT(_PUNCTPAD_DV, KC_ENT)        // Momentary layer or tap key
+#define LT_PQTB LT(_PUNCTPAD_QW, KC_TAB)        // Momentary layer or tap key
+#define LT_PQET LT(_PUNCTPAD_QW, KC_ENT)        // Momentary layer or tap key
+#define CTL_ESC CTL_T(KC_ESC)                   // Hold mod or tap key
+#define CTL_TAB CTL_T(KC_TAB)                   // Hold mod or tap key
+#define GUI_ENT GUI_T(KC_ENT)                   // Hold mod or tap key
+#define CTL_ENT CTL_T(KC_ENT)                   // Hold mod or tap key
+#define GUI_TAB GUI_T(KC_TAB)                   // Hold mod or tap key
+//#define TT_OHDV TT(_ONEHAND_DV)               // Layer Tap Toggle
+//#define TT_OHDF TT(_ONEHAND_FLIP_DV)          // Layer Tap Toggle
+//#define M_OHFDV MO(_ONEHAND_FLIP_DV)          // Momentary activates layer
+//#define OS_OHFD OSL(_ONEHAND_FLIP_DV)         // One shot layer
+//#define LT_OFSP LT(_ONEHAND_FLIP_DV, KC_SPC)  // Momentary layer or tap key
+//#define LT_OFBS LT(_ONEHAND_FLIP_DV, KC_BSPC) // Momentary layer or tap key
+//#define LT_OFTB LT(_ONEHAND_FLIP_DV, KC_TAB)  // Momentary layer or tap key
+//#define LT_OFET LT(_ONEHAND_FLIP_DV, KC_ENT)  // Momentary layer or tap key
 
 /* defining keycodes for LSft + RSft = CpLk */
 enum my_keycodes {
@@ -164,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_RESET_NUMPAD] = LAYOUT_ortho_5x15( /* reset, and numpad */
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,   RGB_TOG, RGB_MOD, RGB_M_T, KC_NLCK, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, KC_SLCK,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSCR,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSCR,
         CTL_ESC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_M_K, RGB_M_X, RGB_M_G, XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
         XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, XXXXXXX, CTL_ENT, XXXXXXX, KC_PENT, KC_P0,   _______, _______, _______, _______, _______
@@ -281,47 +282,48 @@ void led_set_user(uint8_t usb_led) {
 
 }
 
-/* Initializing variable needed for shift 2 capslock */
-bool is_shift_pressed = false;
-
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     // MACRODOWN only works in this function
     switch (id) {
-  	case 0:
-    	    if (record->event.pressed) {
-      		register_code(KC_RSFT);
-    	    }
-    	    else {
-      		unregister_code(KC_RSFT);
-    	    }
-    	    break;
+        case 0:
+            if (record->event.pressed) {
+                register_code(KC_RSFT);
+            }
+            else {
+                unregister_code(KC_RSFT);
+            }
+            break;
     }
     return MACRO_NONE;
 };
 
+/* Initializing variables needed for shift 2 capslock */
+bool is_lsft_pressed = false;    // left shift
+bool is_rsft_pressed = false;    // right shift
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    /* Toggle capslock when pressing both left and right shift keys
+     * LSFT2CP
+     * RSFT2CP
+     */
     switch (keycode) {
-        /* Toggle capslock when pressing both left and right shift keys
-         * LSFT2CP
-         * RSFT2CP
-         */
         case LSFT2CP:
             if (record->event.pressed) {
-                if (is_shift_pressed) {
-                    /* is_shift_pressed is true, send capslock */
+                if (is_rsft_pressed) {
+                    /* If is_rsft_pressed is true, send capslock */
                     register_code(KC_CAPS);
                 } else {
-                    /* If is_shift_pressed is false, set to true and send
-                     * shift
+                    /* When left shift key is pressed, if is_rsft_pressed
+                     * is false, set is_lsft_pressed to true and send shift
                      */
-                    is_shift_pressed = true;
+                    is_lsft_pressed = true;
                     register_code(KC_LSFT);
                 }
             } else {
-                /* Set is_shift_pressed to false, and keyup for capslock and
-                 * shift
+                /* When left shift key is released, set is_lsft_pressed
+                 * to false, and keyup for capslock and shift
                  */
-                is_shift_pressed = false;
+                is_lsft_pressed = false;
                 unregister_code(KC_CAPS);
                 unregister_code(KC_LSFT);
             } 
@@ -329,21 +331,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case RSFT2CP:
             if (record->event.pressed) {
-                if (is_shift_pressed) {
-                    /* is_shift_pressed is true, send capslock */
+                if (is_lsft_pressed) {
+                    /* If is_lsft_pressed is true, send capslock */
                     register_code(KC_CAPS);
                 } else {
-                    /* If is_shift_pressed is false, set to true and send
-                     * shift
+                    /* When right shift key is pressed, if is_lsft_pressed
+                     * is false, set is_rsft_pressed to true and send shift
                      */
-                    is_shift_pressed = true;
+                    is_rsft_pressed = true;
                     register_code(KC_RSFT);
                 }
             } else {
-                /* Set is_shift_pressed to false, and keyup for capslock and
-                 * shift
+                /* When right shift key is released, set is_rsft_pressed
+                 * to false, and keyup for capslock and shift
                  */
-                is_shift_pressed = false;
+                is_rsft_pressed = false;
                 unregister_code(KC_CAPS);
                 unregister_code(KC_RSFT);
             }
