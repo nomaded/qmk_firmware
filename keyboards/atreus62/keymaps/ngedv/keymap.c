@@ -154,21 +154,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------.                ,-----------------------------------------.
      * |      |      |      |      |      | Rst  |                | NmLk |      | Np / | Np * | Np - | SLck |
      * |------+------+------+------+------+------|                |------+------+------+------+------+------|
-     * | -L4  |      |      |      |      |      |                |      | Np 7 | Np 8 | Np 9 | Np + | PScr |
+     * | -L4  |      |      |      |      |AS Up |                |      | Np 7 | Np 8 | Np 9 | Np + | PScr |
      * |------+------+------+------+------+------|                |------+------+------+------+------+------|
-     * |C(Esc)|      |      |      |      |      |,------.,------.|      | Np 4 | Np 5 | Np 6 | Np + | Paus |
+     * |C(Esc)|      |      |      |      |AS Dn |,------.,------.|      | Np 4 | Np 5 | Np 6 | Np + | Paus |
      * |------+------+------+------+------+------|| Ctrl ||      ||------+------+------+------+------+------|
-     * | LSft |      |      |      |      |      ||      ||Np Ent|| Np 0 | Np 1 | Np 2 | Np 3 | Np . | RSft |
+     * | LSft |      |      |      |      |AS Tog||      ||Np Ent|| Np 0 | Np 1 | Np 2 | Np 3 | Np . | RSft |
      * |------+------+------+------+------+------|| Entr ||      ||------+------+------+------+------+------|
-     * |      |      |      | Del  | Bksp |      |`------'`------'| Np 0 | Spce | Left | Down |  Up  | Rght |
+     * |      |      |      | Del  | Bksp |AS Rep|`------'`------'| Np 0 | Spce | Left | Down |  Up  | Rght |
      * `-----------------------------------------'                `-----------------------------------------'
      */
     [_RESET_NUMPAD] = LAYOUT( /* reset, and numpad */
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,                     KC_NLCK, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, XXXXXXX,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSCR,
-        CTL_ESC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
-        XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, XXXXXXX, CTL_ENT, KC_PENT, KC_P0,   _______, _______, _______, _______, _______
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ASUP,                   XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSCR,
+        CTL_ESC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ASDN,                   XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ASTG,                   KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
+        XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, KC_ASRP, CTL_ENT, KC_PENT, KC_P0,   _______, _______, _______, _______, _______
     ),
   
     /* one-handed dvorak.

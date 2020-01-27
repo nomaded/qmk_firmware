@@ -29,5 +29,7 @@
 #define IS_COMMAND() (get_mods() == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT)))
 #undef TAPPING_TERM
 #define TAPPING_TERM 120
-#define PERMISSIVE_HOLD
+//#define PERMISSIVE_HOLD
+#define AUTO_SHIFT_TIMEOUT 150
+#define NO_AUTO_SHIFT_SPECIAL
 
