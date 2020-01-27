@@ -247,11 +247,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *   |      |      |      | Del  | BkSp |                                            | Spce | Left | Down |  Up  | Rght |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
-     *                                             |      | -L4  |  |      |      |
+     *                                             |      | -L4  |  |AS Tog|AS Rep|
      *                                      ,------|------|------|  |------+------+------.
-     *                                      |      | Ctrl |      |  |      |      |      |
+     *                                      |      | Ctrl |      |  |AS Up |      |      |
      *                                      |      |      |------|  |------|Np Ent| Np 0 |
-     *                                      |      | Ent  |      |  |      |      |      |
+     *                                      |      | Ent  |      |  |AS Dn |      |      |
      *                                      `--------------------'  `--------------------'
      */
     [_RESET_NUMPAD] = LAYOUT_ergodox(  /* reset, and numpad; turn on teensy LED */
@@ -270,9 +270,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
                  XXXXXXX, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
                                    _______, _______, _______, _______, _______,
-        XXXXXXX, XXXXXXX,
-        XXXXXXX,
-        XXXXXXX, KC_PENT, KC_P0
+        KC_ASTG, KC_ASRP,
+        KC_ASUP,
+        KC_ASDN, KC_PENT, KC_P0
     ),
 
 };
