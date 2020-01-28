@@ -68,22 +68,22 @@ enum my_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* default, dvorak in keyboard, qwerty in OS
      * ,--------------------------------------------------------------------------------------------------------.
-     * | App  | 1 !  | 2 @  | 3 #  | 4 $  | 5 %  |      |      |      | 6 ^  | 7 &  | 8 *  | 9 (  | 0 )  | +L5  |
+     * | App  | 1 !  | 2 @  | 3 #  | 4 $  | 5 %  |      |AS Tog|      | 6 ^  | 7 &  | 8 *  | 9 (  | 0 )  | +L5  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | +L4  | ' "  | , <  | . >  | p P  | y Y  | Esc  |      | Esc  | f F  | g G  | c C  | r R  | l L  | +L1  |
+     * | +L4  | ' "  | , <  | . >  | p P  | y Y  | Esc  |AS Rep| Esc  | f F  | g G  | c C  | r R  | l L  | +L1  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |C(Esc)| a A  | o O  | e E  | u U  | i I  | Tab  |      | Tab  | d D  | h H  | t T  | n N  | s S  | - _  |
+     * |C(Esc)| a A  | o O  | e E  | u U  | i I  | Tab  |AS Up | Tab  | d D  | h H  | t T  | n N  | s S  | - _  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft | ; :  | q Q  | j J  | k K  | x X  | LGui |      | RGui | b B  | m M  | w W  | v V  | z Z  | RSft |
+     * | LSft | ; :  | q Q  | j J  | k K  | x X  | LGui |AS Dn | RGui | b B  | m M  | w W  | v V  | z Z  | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | Home | End  | LAlt | Del  | Bksp | ~L2  |C(Tab)|      |G(Ent)| ~L2  | Spce | Left | Down |  Up  | Rght |
      * `-----------------------------------------+------+------+------------------------------------------------'
      */
     [_DVORAK] = LAYOUT_ortho_5x15( /* default, dvorak in keyboard, qwerty in OS */
-        KC_APP,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX, XXXXXXX, XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TT_OHDV,
-        TT_RST,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_ESC,  XXXXXXX, KC_ESC,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    TT_QW,
-        CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_TAB,  XXXXXXX, KC_TAB,  KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
-        LSFT2CP, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_LGUI, XXXXXXX, KC_RGUI, KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RSFT2CP,
+        KC_APP,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX, KC_ASTG, XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TT_OHDV,
+        TT_RST,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_ESC,  KC_ASRP, KC_ESC,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    TT_QW,
+        CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_TAB,  KC_ASUP, KC_TAB,  KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
+        LSFT2CP, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_LGUI, KC_ASDN, KC_RGUI, KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RSFT2CP,
         KC_HOME, KC_END,  KC_LALT, KC_DEL,  KC_BSPC, M_PPDV,  CTL_TAB, XXXXXXX, GUI_ENT, M_PPDV,  KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
     ),
  
