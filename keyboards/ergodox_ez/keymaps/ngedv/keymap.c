@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| Tab  |                | Tab  |------+------+------+------+------+--------|
      * | LShift | ; :  | q Q  | j J  | k K  | x X  |      |                |      | b B  | m M  | w W  | v V  | z Z  | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   | Home | End  | LAlt | Del  | BkSp |                                            | Spce | Left | Down | Up   | Rght |
+     *   |      |      |      | Del  | BkSp |                                            | Spce | RAlt |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             | LGui | +L4  |  | PgUp | RGui |
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_ESC,
         CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,
         LSFT2CP, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_TAB,
-        KC_HOME, KC_END,  KC_LALT, KC_DEL,  KC_BSPC,
+        XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  KC_BSPC,
                                                               KC_LGUI, TT_RST,
                                                                        TT_QW,
                                                      M_PPDV,  CTL_TAB, GUI_ENT,
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_ESC,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_SLSH,
                           KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
                  KC_TAB,  KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RSFT2CP,
-                                   KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
+                                   KC_SPC,  KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX,
         KC_PGDN, KC_RGUI,
         KC_PGDN,
         CTL_TAB, GUI_ENT, M_PPDV
@@ -121,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| Tab  |                | Tab  |------+------+------+------+------+--------|
      * | LShift | z Z  | x X  | c C  | v V  | b B  |      |                |      | n N  | m M  | , <  | . >  | / ?  | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   | Home | End  | LAlt | Del  | BkSp |                                            | Spce | Left | Down | Up   | Rght |
+     *   |      |      |      | Del  | BkSp |                                            | Spce | RAlt |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             | LGui | +L4  |  | PgUp | RGui |
@@ -137,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    _______,
         _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
         _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    _______,
-        _______, _______, _______, _______, _______,
+        XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,
                                                               _______, TT_RST,
                                                                        _______,
                                                      M_PPQW,  _______, _______,
@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
                           KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_MINS,
                  _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
-                                   _______, _______, _______, _______, _______,
+                                   _______, _______, XXXXXXX, XXXXXXX, XXXXXXX,
         _______, _______,
         _______,
         _______, _______, M_PPQW
