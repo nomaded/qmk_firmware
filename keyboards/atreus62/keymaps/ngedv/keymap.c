@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|| Ctrl || Gui  ||------+------+------+------+------+------|
      * | LSft | ; :  | q Q  | j J  | k K  | x X  ||      ||      || b B  | m M  | w W  | v V  | z Z  | RSft |
      * |------+------+------+------+------+------|| Tab  || Entr ||------+------+------+------+------+------|
-     * | Home | End  | LAlt | Del  | Bksp | ~L2  |`------'`------'| ~L2  | Spce | Left | Down |  Up  | Rght |
+     * |      |      |      | Del  | Bksp | ~L2  |`------'`------'| ~L2  | Spce | RAlt |      |      |      |
      * `-----------------------------------------'                `-----------------------------------------'
      */
     [_DVORAK] = LAYOUT( /* default, dvorak in keyboard, qwerty in OS */
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TT_RST,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,                      KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    TT_QW,
         CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,                      KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
         LSFT2CP, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,                      KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RSFT2CP,
-        KC_HOME, KC_END,  KC_LALT, KC_DEL,  KC_BSPC, M_PPDV,  CTL_TAB, GUI_ENT, M_PPDV,  KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+        XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  KC_BSPC, M_PPDV,  CTL_TAB, GUI_ENT, M_PPDV,  KC_SPC,  KC_RAlT, XXXXXXX, XXXXXXX, XXXXXXX
     ),
   
     /* qwerty in keyboard, dvorak in OS
@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|| Ctrl || Gui  ||------+------+------+------+------+------|
      * | LSft | z Z  | x X  | c C  | v V  | b B  ||      ||      || n N  | m M  | , <  | . >  | / ?  | RSft |
      * |------+------+------+------+------+------|| Tab  || Entr ||------+------+------+------+------+------|
-     * | Home | End  | LAlt | Del  | Bksp | ~L3  |`------'`------'| ~L3  | Spce | Left | Down |  Up  | Rght |
+     * |      |      |      | Del  | Bksp | ~L3  |`------'`------'| ~L3  | Spce | RAlt |      |      |      |
      * `-----------------------------------------'                `-----------------------------------------'
      */
     [_QWERTY] = LAYOUT( /* qwerty in keyboard, dvorak in OS */
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TT_RST,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    _______,
         _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_MINS,
         _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
-        _______, _______, _______, _______, _______, M_PPQW,  _______, _______, M_PPQW,  _______, _______, _______, _______, _______
+        XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, M_PPQW,  _______, _______, M_PPQW,  _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
     ),
   
     /* punctpad, dvorak in keyboard, qwerty in OS
