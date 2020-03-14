@@ -162,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| \    |                | /    |------+------+------+------+------+--------|
      * | LShift | End  |      | +    | =    | PgDn |      |                |      | ~    | -    | _    | |    | ?    | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   |      |      |      |G(Ent)| Spce |                                            | BkSp | Del  |      |      |      |
+     *   |      |      |      | Del  | BkSp |                                            | Spce |G(Ent)|      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
@@ -178,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_LCBR, KC_LBRC, KC_UP,   XXXXXXX, KC_PGUP, KC_ESC,
         _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSLS,
         _______, KC_END,  XXXXXXX, KC_PLUS, KC_EQL,  KC_PGDN, KC_BSLS,
-        XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC, 
+        XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,
                                                               XXXXXXX, XXXXXXX,
                                                                        XXXXXXX,
                                                      _______, XXXXXXX, XXXXXXX,
@@ -187,7 +187,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12, 
                           KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTL_ESC,
                  KC_SLSH, KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
-                                   KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX,
+                                   _______, GUI_ENT, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX,
         XXXXXXX,
         XXXXXXX, XXXXXXX, _______
@@ -203,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| \    |                | [    |------+------+------+------+------+--------|
      * | LShift | End  |      | }    | ]    | PgDn |      |                |      | ~    | '    | "    | |    | {    | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   |      |      |      |G(Ent)| Spce |                                            | BkSp | Del  |      |      |      |
+     *   |      |      |      | Del  | BkSp |                                            | Spce |G(Ent)|      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
@@ -228,7 +228,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_EQL,  KC_PLUS, KC_F12, 
                           KC_LBRC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTL_ESC,
                  KC_SLSH, KC_TILD, KC_QUOT, KC_DQUO, KC_PIPE, KC_LCBR, _______,
-                                   _______, _______, XXXXXXX, XXXXXXX, XXXXXXX,
+                                   _______, GUI_ENT, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX,
         XXXXXXX,
         XXXXXXX, XXXXXXX, _______
