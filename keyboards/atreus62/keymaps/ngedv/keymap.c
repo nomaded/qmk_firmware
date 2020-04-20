@@ -115,9 +115,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |      | {    | [    | Up   |      | PgUp |                | `    | (    | )    | ]    | }    | F12  |
      * |------+------+------+------+------+------|                |------+------+------+------+------+------|
      * |C(Esc)| Home | Left | Down | Rght | \    |,------.,------.| /    | Left | Down | Up   | Rght |C(Esc)|
-     * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
+     * |------+------+------+------+------+------|| Ctrl || Gui  ||------+------+------+------+------+------|
      * | LSft | End  |      | +    | =    | PgDn ||      ||      || ~    | -    | _    | |    | ?    | RSft |
-     * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
+     * |------+------+------+------+------+------|| Tab  || Entr ||------+------+------+------+------+------|
      * |      |      |      |G(Ent)| Spce | ~L2  |`------'`------'| ~L2  | BkSp | Del  |      |      |      |
      * `-----------------------------------------'                `-----------------------------------------'
      */
@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_LCBR, KC_LBRC, KC_UP,   XXXXXXX, KC_PGUP,                   KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12, 
         _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSLS,                   KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTL_ESC,
         _______, KC_END,  XXXXXXX, KC_PLUS, KC_EQL,  KC_PGDN,                   KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
-        XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC,  _______, XXXXXXX, XXXXXXX, _______, KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX
+        XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC,  _______, _______, _______, _______, KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX
     ),
   
     /* punctpad, qwerty in keyboard, dvorak in OS
@@ -136,9 +136,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |      | _    | -    | Up   |      | PgUp |                | `    | (    | )    | =    | +    | F12  |
      * |------+------+------+------+------+------|                |------+------+------+------+------+------|
      * |C(Esc)| Home | Left | Down | Rght | \    |,------.,------.| [    | Left | Down | Up   | Rght |C(Esc)|
-     * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
+     * |------+------+------+------+------+------|| Ctrl || Gui  ||------+------+------+------+------+------|
      * | LSft | End  |      | }    | ]    | PgDn ||      ||      || ~    | '    | "    | |    | {    | RSft |
-     * |------+------+------+------+------+------||      ||      ||------+------+------+------+------+------|
+     * |------+------+------+------+------+------|| Tab  || Entr ||------+------+------+------+------+------|
      * |      |      |      |G(Ent)| Spce | ~L3  |`------'`------'| ~L3  | BkSp | Del  |      |      |      |
      * `-----------------------------------------'                `-----------------------------------------'
      */
@@ -147,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_UNDS, KC_MINS, KC_UP,   XXXXXXX, KC_PGUP,                   KC_GRV,  KC_LPRN, KC_RPRN, KC_EQL,  KC_PLUS, KC_F12, 
         _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSLS,                   KC_LBRC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTL_ESC,
         _______, KC_END,  XXXXXXX, KC_RCBR, KC_RBRC, KC_PGDN,                   KC_TILD, KC_QUOT, KC_DQUO, KC_PIPE, KC_LCBR, _______,
-        XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
+        XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
     ),
   
     /* reset, and numpad
