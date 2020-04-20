@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | LSft | End  |      | +    | =    | PgDn |      |      |      | ~    | -    | _    | |    | ?    | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |G(Ent)| Spce | ~L2  |      |      |      | ~L2  | BkSp | Del  |      |      |      |
+     * |      |      |      |G(Ent)| Spce | ~L2  |C(Tab)|      |G(Ent)| ~L2  | BkSp | Del  |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_PUNCTPAD_DV] = LAYOUT_ortho_5x15( /* punctpad, dvorak in keyboard, qwerty in OS */
@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_LCBR, KC_LBRC, KC_UP,   XXXXXXX, KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX, KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12, 
         _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTL_ESC,
         _______, KC_END,  XXXXXXX, KC_PLUS, KC_EQL,  KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
-        XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC,  _______, XXXXXXX, XXXXXXX, XXXXXXX, _______, KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX
+        XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC,  _______, _______, XXXXXXX, _______, _______, KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX
     ),
   
     /* punctpad, qwerty in keyboard, dvorak in OS
@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | LSft | End  |      | }    | ]    | PgDn |      |      |      | ~    | '    | "    | |    | {    | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |G(Ent)| Spce | ~L3  |      |      |      | ~L3  | BkSp | Del  |      |      |      |
+     * |      |      |      |G(Ent)| Spce | ~L3  |C(Tab)|      |G(Ent)| ~L3  | BkSp | Del  |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_PUNCTPAD_QW] = LAYOUT_ortho_5x15( /* punctpad, qwerty in keyboard, dvorak in OS */
@@ -147,12 +147,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_UNDS, KC_MINS, KC_UP,   XXXXXXX, KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX, KC_GRV,  KC_LPRN, KC_RPRN, KC_EQL,  KC_PLUS, KC_F12, 
         _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTL_ENT,
         _______, KC_END,  XXXXXXX, KC_RCBR, KC_RBRC, KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, KC_QUOT, KC_DQUO, KC_PIPE, KC_LCBR, _______,
-        XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
+        XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, XXXXXXX, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
     ),
   
     /* reset, and numpad
      * ,--------------------------------------------------------------------------------------------------------.
-     * |      |      |      |      |      | Rst  |      |      |      | NmLk |      | Np / | Np * | Np - | SLck |
+     * |      |      |Vol Dn|Vol Up| Mute | Rst  |      |      |      | NmLk |      | Np / | Np * | Np - | SLck |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | -L4  |      |      |      |      |      |      |      |      |      | Np 7 | Np 8 | Np 9 | Np + | PScr |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
@@ -164,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_RESET_NUMPAD] = LAYOUT_ortho_5x15( /* reset, and numpad */
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,   RGB_TOG, RGB_MOD, RGB_M_T, KC_NLCK, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, KC_SLCK,
+        XXXXXXX, XXXXXXX, KC_VOLD, KC_VOLU, KC_MUTE, RESET,   RGB_TOG, RGB_MOD, RGB_M_T, KC_NLCK, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, KC_SLCK,
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSCR,
         CTL_ESC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_M_K, RGB_M_X, RGB_M_G, XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,

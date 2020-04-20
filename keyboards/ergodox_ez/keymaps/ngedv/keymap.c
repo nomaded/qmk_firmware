@@ -167,9 +167,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
      *                                      ,------|------|------|  |------+------+------.
-     *                                      |      |      |      |  |      |      |      |
+     *                                      |      | Ctrl |      |  |      | Gui  |      |
      *                                      | ~L2  |      |------|  |------|      | ~L2  |
-     *                                      |      |      |      |  |      |      |      |
+     *                                      |      | Tab  |G(Ent)|  |C(Tab)| Entr |      |
      *                                      `--------------------'  `--------------------'
      */
     [_PUNCTPAD_DV] = LAYOUT_ergodox(  /* punctpad, dvorak in keyboard, qwerty in OS; turn on LED 1 */
@@ -181,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC, 
                                                               XXXXXXX, XXXXXXX,
                                                                        XXXXXXX,
-                                                     _______, XXXXXXX, XXXXXXX,
+                                                     _______, _______, _______,
         // right hand
                  XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, 
                  KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12, 
@@ -190,7 +190,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX,
         XXXXXXX,
-        XXXXXXX, XXXXXXX, _______
+        _______, _______, _______
     ),
 
     /* punctpad, qwerty in keyboard, dvorak in OS; turn on LED 1 & 2
@@ -208,9 +208,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
      *                                      ,------|------|------|  |------+------+------.
-     *                                      |      |      |      |  |      |      |      |
+     *                                      |      | Ctrl |      |  |      | Gui  |      |
      *                                      | ~L3  |      |------|  |------|      | ~L3  |
-     *                                      |      |      |      |  |      |      |      |
+     *                                      |      | Tab  |G(Ent)|  |C(Tab)| Entr |      |
      *                                      `--------------------'  `--------------------'
      */
     [_PUNCTPAD_QW] = LAYOUT_ergodox(  /* punctpad, qwerty in keyboard, dvorak in OS; turn on LED 1 & 2 */
@@ -222,7 +222,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,
                                                               XXXXXXX, XXXXXXX,
                                                                        XXXXXXX,
-                                                     _______, XXXXXXX, XXXXXXX,
+                                                     _______, _______, _______,
         // right hand
                  XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, 
                  KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_EQL,  KC_PLUS, KC_F12, 
@@ -231,12 +231,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    _______, _______, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX,
         XXXXXXX,
-        XXXXXXX, XXXXXXX, _______
+        _______, _______, _______
     ),
 
      /* reset, and numpad; turn on teensy LED
      * ,--------------------------------------------------.                ,--------------------------------------------------.
-     * |        |      |      |      |      |      | Rst  |                | NmLk |      |      | Np / | Np * | Np - | ScrLk  |
+     * |        |      |Vol Dn|Vol Up| Mute |      | Rst  |                | NmLk |      |      | Np / | Np * | Np - | ScrLk  |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
      * |        |      |      | Up   |      |      |      |                |      |      | Np 7 | Np 8 | Np 9 | Np + | PrtScn |
      * |--------+------+------+------+------+------|      |                |      |------+------+------+------+------+--------|
@@ -256,7 +256,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_RESET_NUMPAD] = LAYOUT_ergodox(  /* reset, and numpad; turn on teensy LED */
         // left hand
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,
+        XXXXXXX, XXXXXXX, KC_VOLD, KC_VOLU, KC_MUTE, XXXXXXX, RESET,
         XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX, XXXXXXX,
         CTL_ESC, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
