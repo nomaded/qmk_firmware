@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   
     /* reset, and numpad
      * ,-----------------------------------------.                ,-----------------------------------------.
-     * |      |      |      |      |      | Rst  |                | NmLk |      | Np / | Np * | Np - | SLck |
+     * |      |      |Vol Up|Vol Dn| Mute | Rst  |                | NmLk |      | Np / | Np * | Np - | SLck |
      * |------+------+------+------+------+------|                |------+------+------+------+------+------|
      * | -L4  |      |      | Up   |      |AS Up |                |      | Np 7 | Np 8 | Np 9 | Np + | PScr |
      * |------+------+------+------+------+------|                |------+------+------+------+------+------|
@@ -164,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------'                `-----------------------------------------'
      */
     [_RESET_NUMPAD] = LAYOUT( /* reset, and numpad */
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,                     KC_NLCK, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, XXXXXXX,
+        XXXXXXX, XXXXXXX, KC_VOLD, KC_VOLU, KC_MUTE, RESET,                     KC_NLCK, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, XXXXXXX,
         _______, XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX, KC_ASUP,                   XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSCR,
         CTL_ESC, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_ASDN,                   XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ASTG,                   KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
