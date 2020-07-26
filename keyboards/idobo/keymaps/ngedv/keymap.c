@@ -357,7 +357,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f900688bb442609089a82ac9fdcb9a4e7afed7b6
