@@ -35,10 +35,11 @@
 #define _NAV_DV 4
 #define _NAV_QW 5
 #define _RESET_NUMPAD 6
-#define _ONEHAND_DV 7
-#define _ONEHAND_FLIP_DV 8
+//#define _ONEHAND_DV 7
+//#define _ONEHAND_FLIP_DV 8
 
 /* Helpful defines */
+/* Layer-related */
 #define TT_QW TT(_QWERTY)                       // Tap Toggle Qwerty Layer
 #define TT_RST TT(_RESET_NUMPAD)                // Tap Toggle Reset/Num Layer
 #define M_PUNDV MO(_PUNCT_DV)                   // Momentary DV Punct layer
@@ -49,6 +50,17 @@
 #define OS_PUNQ OSL(_PUNCT_QW)                  // One shot QW Punct layer
 #define OS_NAVD OSL(_NAV_DV)                    // One shot DV Nav layer
 #define OS_NAVQ OSL(_NAV_QW)                    // One shot QW Nav layer
+#define LT_PD_X LT(_PUNCT_DV, KC_X)             // Momentary layer or tap key
+//#define TT_OHDV TT(_ONEHAND_DV)                 // Layer Tap Toggle
+//#define TT_OHDF TT(_ONEHAND_FLIP_DV)            // Layer Tap Toggle
+//#define M_OHFDV MO(_ONEHAND_FLIP_DV)            // Momentary activates layer
+//#define OS_OHFD OSL(_ONEHAND_FLIP_DV)           // One shot layer
+//#define LT_OFSP LT(_ONEHAND_FLIP_DV, KC_SPC)    // Momentary layer or tap key
+//#define LT_OFBS LT(_ONEHAND_FLIP_DV, KC_BSPC)   // Momentary layer or tap key
+//#define LT_OFTB LT(_ONEHAND_FLIP_DV, KC_TAB)    // Momentary layer or tap key
+//#define LT_OFET LT(_ONEHAND_FLIP_DV, KC_ENT)    // Momentary layer or tap key
+
+/* Modifier-related */
 #define CTL_ENT CTL_T(KC_ENT)                   // Ctrl on hold, Enter on tap
 #define CTL_ESC CTL_T(KC_ESC)                   // Ctrl on hold, Esc on tap
 #define CTL_TAB CTL_T(KC_TAB)                   // Ctrl on hold, Tab on tap
@@ -56,20 +68,32 @@
 #define GUI_TAB GUI_T(KC_TAB)                   // Gui on hold, Tab on tap
 #define C_HOME LCTL(KC_HOME)                    // Go to top of page
 #define C_END LCTL(KC_END)                      // Go to bottom of page
-#define OS_LALT OSM(MOD_LALT)                    // Gui on hold, Tab on tap
-#define TT_OHDV TT(_ONEHAND_DV)                 // Layer Tap Toggle
-#define TT_OHDF TT(_ONEHAND_FLIP_DV)            // Layer Tap Toggle
-#define M_OHFDV MO(_ONEHAND_FLIP_DV)            // Momentary activates layer
-#define OS_OHFD OSL(_ONEHAND_FLIP_DV)           // One shot layer
-#define LT_OFSP LT(_ONEHAND_FLIP_DV, KC_SPC)    // Momentary layer or tap key
-#define LT_OFBS LT(_ONEHAND_FLIP_DV, KC_BSPC)   // Momentary layer or tap key
-#define LT_OFTB LT(_ONEHAND_FLIP_DV, KC_TAB)    // Momentary layer or tap key
-#define LT_OFET LT(_ONEHAND_FLIP_DV, KC_ENT)    // Momentary layer or tap key
+#define OS_LALT OSM(MOD_LALT)                   // One shot Left Alt
+#define OS_LSFT OSM(MOD_LSFT)                   // One shot Left Shift
+#define OS_RSFT OSM(MOD_RSFT)                   // One shot Right Shift
+#define LSFT_SC LSFT_T(KC_SCLN)
+#define LALT__Q LALT_T(KC_Q)
+#define LCTL__J LCTL_T(KC_J)
+#define LGUI__K LGUI_T(KC_K)
+#define RGUI__M RGUI_T(KC_M)
+#define RCTL__W RCTL_T(KC_W)
+#define LALT__V LALT_T(KC_V)
+#define RSFT__Z RSFT_T(KC_Z)
+#define ALT_DEL LALT_T(KC_DEL)
+#define GUI_BSP LGUI_T(KC_BSPC)
+#define CTL_SPC RCTL_T(KC_SPC)
 
-/* defining keycodes for LSft + RSft = CpLk */
-enum my_keycodes {
-    LSFT2CP = SAFE_RANGE,
-    RSFT2CP
+/* defining keycodes for LSft + RSft = CpLk. Not needed anymore. Keeping for
+ * reference -- ECN
+ */
+// enum my_keycodes {
+//     LSFT2CP = SAFE_RANGE,
+//     RSFT2CP
+// };
+
+enum combos {
+    LR_CAPS,
+    EU_GUI
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -79,18 +103,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | +L6  | ' "  | , <  | . >  | p P  | y Y  | Esc  |      | Esc  | f F  | g G  | c C  | r R  | l L  | +L1  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc| a A  | o O  | e E  | u U  | i I  | Tab  |      | Tab  | d D  | h H  | t T  | n N  | s S  | - _  |
+     * | C_Esc| a A  | o O  | e E  | u U  | i I  | LGui |      | RGui | d D  | h H  | t T  | n N  | s S  | - _  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft | ; :  | q Q  | j J  | k K  | x X  | LGui |      | RGui | b B  | m M  | w W  | v V  | z Z  | RSft |
+     * | LSft | ; :  | q Q  | j J  | k K  | x X  | Tab  |      | Tab  | b B  | m M  | w W  | v V  | z Z  | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | Del  | Bksp |~L4/L2| C_Tab|      | G_Ent|~L2/L4| Spce | RAlt |      |      |      |
+     * |      |      |      | Del  | Bksp |OS(L4)| C_Tab|      | G_Ent|OS(L2)| Spce | RAlt |      |      |      |
      * `-----------------------------------------+------+------+------------------------------------------------'
      */
     [_DVORAK] = LAYOUT_ortho_5x15( /* default, dvorak in keyboard, qwerty in OS */
-        OS_LALT, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX, XXXXXXX, XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    TT_OHDV,
+        OS_LALT, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX, XXXXXXX, XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX,
         TT_RST,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_ESC,  XXXXXXX, KC_ESC,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    TT_QW,
-        CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_TAB,  XXXXXXX, KC_TAB,  KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
-        LSFT2CP, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_LGUI, XXXXXXX, KC_RGUI, KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RSFT2CP,
+        CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_LGUI, XXXXXXX, KC_RGUI, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
+        KC_LSFT, LSFT_SC, LALT__Q, LCTL__J, LGUI__K, KC_X,    KC_TAB,  XXXXXXX, KC_TAB,  KC_B,    RGUI__M, RCTL__W, LALT__V, RSFT__Z, KC_RSFT,
         XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  KC_BSPC, OS_NAVD, CTL_TAB, XXXXXXX, GUI_ENT, OS_PUND, KC_SPC,  KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
@@ -100,17 +124,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | +L6  | q Q  | w W  | e E  | r R  | t T  | Esc  |      | Esc  | y Y  | u U  | i I  | o O  | p P  | -L1  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc| a A  | s S  | d D  | f F  | g G  | Tab  |      | Tab  | h H  | j J  | k K  | l L  | ; :  | ' "  |
+     * | C_Esc| a A  | s S  | d D  | f F  | g G  | LGui |      | RGui | h H  | j J  | k K  | l L  | ; :  | ' "  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft | z Z  | x X  | c C  | v V  | b B  | LGui |      | RGui | n N  | m M  | , <  | . >  | / ?  | RSft |
+     * | LSft | z Z  | x X  | c C  | v V  | b B  | Tab  |      | Tab  | n N  | m M  | , <  | . >  | / ?  | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | Del  | Bksp |~L5/L3| C_Tab|      | G_Ent|~L3/L5| Spce | RAlt |      |      |      |
+     * |      |      |      | Del  | Bksp |OS(L5)| C_Tab|      | G_Ent|OS(L3)| Spce | RAlt |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_QWERTY] = LAYOUT_ortho_5x15( /* qwerty in keyboard, dvorak in OS */
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX,
         _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    _______, _______, _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    _______,
-        _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    _______, _______, _______, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_MINS,
+        _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    _______, _______, _______, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    _______, _______, _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
         _______, _______, _______, _______, _______, OS_NAVQ, _______, _______, _______, OS_PUNQ, _______, _______, _______, _______, _______
     ),
@@ -119,62 +143,62 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------------------------------------------------------------.
      * |      | F1   | F2   | F3   | F4   | F5   |      |      |      | F6   | F7   | F8   | F9   | F10  | F11  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | Up   | PgUp |      |      |      |      | `    | [    | ]    | {    | }    | F12  |
+     * |      | Eject| Prev | Play | Next |      | Esc  |      | Esc  | `    | [    | ]    | {    | }    | F12  |
+     a |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
+     * | C_Esc|      |Vol Dn| Mute |Vol Up| \    | LGui |      | RGui | /    | -    | _    | (    | )    | C_Esc|
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc| Home | Left | Down | Rght | \    |      |      |      | /    | -    | _    | (    | )    | C_Esc|
+     * | LSft | Undo | Cut  | Copy | Paste|      | \    |      | /    | ~    | =    | +    | |    | ?    | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft | End  |      |      | PgDn |      |      |      |      | ~    | =    | +    | |    | ?    | RSft |
-     * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |      | Spce |~L2/L4| G_Ent|      | C_Tab|~L2/L4| BkSp | Del  |      |      |      |
+     * |      |      |      | G_Ent| Spce | ~L4  | G_Ent|      | C_Tab|OS(L4)| BkSp | Del  |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_PUNCT_DV] = LAYOUT_ortho_5x15( /* punctpad, dvorak in keyboard, qwerty in OS */
-        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, 
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_GRV,  KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_F12, 
-        _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLSH, KC_MINS, KC_UNDS, KC_LPRN, KC_RPRN, CTL_ESC,
-        _______, KC_END,  XXXXXXX, XXXXXXX, KC_PGDN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, KC_EQL,  KC_PLUS, KC_PIPE, KC_QUES, _______,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SPC,  OS_NAVD, GUI_ENT, XXXXXXX, CTL_TAB, OS_NAVD, KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX
+        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+        XXXXXXX, KC_EJCT, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, KC_ESC,  XXXXXXX, KC_ESC,  KC_GRV,  KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_F12,
+        _______, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, KC_BSLS, KC_LGUI, XXXXXXX, KC_RGUI, KC_SLSH, KC_MINS, KC_UNDS, KC_LPRN, KC_RPRN, CTL_ESC,
+        _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), XXXXXXX, KC_BSLS, XXXXXXX, KC_SLSH, KC_TILD, KC_EQL,  KC_PLUS, KC_PIPE, KC_QUES, _______,
+        XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC,  M_NAVDV, GUI_ENT, XXXXXXX, CTL_TAB, OS_NAVD, KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
      /* punctpad, qwerty in keyboard, dvorak in OS
      * ,--------------------------------------------------------------------------------------------------------.
      * |      | F1   | F2   | F3   | F4   | F5   |      |      |      | F6   | F7   | F8   | F9   | F10  | F11  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | Up   | PgUp |      |      |      |      | `    | -    | =    | _    | +    | F12  |
+     * |      | Eject| Prev | Play | Next |      | Esc  |      | Esc  | `    | -    | =    | _    | +    | F12  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc| Home | Left | Down | Rght | \    |      |      |      | [    | '    | "    | (    | )    | C_Esc|
+     * | C_Esc|      |Vol Dn| Mute |Vol Up| \    | LGui |      | RGui | [    | '    | "    | (    | )    | C_Esc|
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft | End  |      |      | PgDn |      |      |      |      | ~    | ]    | }    | |    | {    | RSft |
+     * | LSft | Undo | Cut  | Copy | Paste|      | \    |      | [    | ~    | ]    | }    | |    | {    | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      |      | Spce |~L3/L5| G_Ent|      | C_Tab|~L3/L5| BkSp | Del  |      |      |      |
+     * |      |      |      | G_Ent| Spce | ~L5  | G_Ent|      | C_Tab|OS(L5)| BkSp | Del  |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_PUNCT_QW] = LAYOUT_ortho_5x15( /* punctpad, qwerty in keyboard, dvorak in OS */
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_UNDS, KC_PLUS, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LBRC, KC_QUOT, KC_DQUO, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RBRC, KC_RCBR, _______, KC_LCBR, _______,
-        _______, _______, _______, _______, _______, OS_NAVQ, _______, _______, _______, OS_NAVQ, _______, _______, _______, _______, _______
+        _______, _______, _______, _______, _______, _______, _______, _______, KC_LBRC, _______, KC_RBRC, KC_RCBR, _______, KC_LCBR, _______,
+        _______, _______, _______, _______, _______, M_NAVQW, _______, _______, _______, OS_NAVQ, _______, _______, _______, _______, _______
     ),
 
      /* nav, dvorak in keyboard, qwerty in OS
      * ,--------------------------------------------------------------------------------------------------------.
      * |      | F1   | F2   | F3   | F4   | F5   |      |      |      | F6   | F7   | F8   | F9   | F10  | F11  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | Up   | PgUp |      |      |      |      | `    | (    | )    | ]    | }    | F12  |
+     * |      |      |      | Up   | PgUp |      | Esc  |      | Esc  | `    | (    | )    | ]    | }    | F12  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc| Home | Left | Down | Rght | End  |      |      |      | /    | Left | Down | Up   | Rght | C_Esc|
+     * | C_Esc| Home | Left | Down | Rght | End  | LGui |      | RGui | /    | Left | Down | Up   | Rght | C_Esc|
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft |C(Hom)|      |      | PgDn |C(End)|      |      |      | ~    | -    | _    | |    | ?    | RSft |
+     * | LSft |C(Hom)|      |      | PgDn |C(End)| \    |      | /    | ~    | -    | _    | |    | ?    | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | G_Ent| Spce |~L4/L2| G_Ent|      | C_Tab|~L4/L2| BkSp | Del  |      |      |      |
+     * |      |      |      | G_Ent| Spce |OS(L2)| G_Ent|      | C_Tab| ~L2  | BkSp | Del  |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
-    [_NAV_DV] = LAYOUT_ortho_5x15( /* punctpad, dvorak in keyboard, qwerty in OS */
-        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, 
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12, 
-        _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  XXXXXXX, XXXXXXX, XXXXXXX, KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
-        _______, C_HOME,  XXXXXXX, XXXXXXX, KC_PGDN, C_END,   XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
+    [_NAV_DV] = LAYOUT_ortho_5x15( /* nav, dvorak in keyboard, qwerty in OS */
+        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+        XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   KC_PGUP, XXXXXXX, KC_ESC,  XXXXXXX, KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12,
+        _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_LGUI, XXXXXXX, KC_RGUI, KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
+        _______, C_HOME,  XXXXXXX, XXXXXXX, KC_PGDN, C_END,   KC_BSLS, XXXXXXX, KC_SLSH, KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
         XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC,  OS_PUND, GUI_ENT, XXXXXXX, CTL_TAB, OS_PUND, KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
@@ -182,21 +206,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------------------------------------------------------------.
      * |      | F1   | F2   | F3   | F4   | F5   |      |      |      | F6   | F7   | F8   | F9   | F10  | F11  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | Up   | PgUp |      |      |      |      | `    | (    | )    | =    | +    | F12  |
+     * |      |      |      | Up   | PgUp |      | Esc  |      | Esc  | `    | (    | )    | =    | +    | F12  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc| Home | Left | Down | Rght | End  |      |      |      | [    | Left | Down | Up   | Rght | C_Esc|
+     * | C_Esc| Home | Left | Down | Rght | End  | LGui |      | RGui | [    | Left | Down | Up   | Rght | C_Esc|
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft |C(Hom)|      |      | PgDn |C(End)|      |      |      | ~    | '    | "    | |    | {    | RSft |
+     * | LSft |C(Hom)|      |      | PgDn |C(End)| \    |      | [    | ~    | '    | "    | |    | {    | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | G_Ent| Spce |~L5/L3| G_Ent|      | C_Tab|~L5/L3| BkSp | Del  |      |      |      |
+     * |      |      |      | G_Ent| Spce |OS(L3)| G_Ent|      | C_Tab| ~L3  | BkSp | Del  |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
-    [_NAV_QW] = LAYOUT_ortho_5x15( /* punctpad, qwerty in keyboard, dvorak in OS */
+    [_NAV_QW] = LAYOUT_ortho_5x15( /* nav, qwerty in keyboard, dvorak in OS */
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LPRN, KC_RPRN, KC_EQL,  KC_PLUS, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LBRC, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_QUOT, KC_DQUO, KC_PIPE, KC_LCBR, _______,
-        _______, _______, _______, _______, _______, OS_PUNQ, _______, _______, _______, OS_PUNQ, _______, _______, _______, _______, _______
+        _______, _______, _______, _______, _______, _______, _______, _______, KC_LBRC, _______, KC_QUOT, KC_DQUO, KC_PIPE, KC_LCBR, _______,
+        _______, _______, _______, _______, _______, OS_PUNQ, _______, _______, _______, M_PUNQW, _______, _______, _______, _______, _______
     ),
 
     /* reset and numpad
@@ -331,78 +355,107 @@ void led_set_user(uint8_t usb_led) {
 
 }
 
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
-    // MACRODOWN only works in this function
-    switch (id) {
-        case 0:
-            if (record->event.pressed) {
-                register_code(KC_RSFT);
-            }
-            else {
-                unregister_code(KC_RSFT);
-            }
-            break;
-    }
-    return MACRO_NONE;
+// const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
+//     // MACRODOWN only works in this function
+//     switch (id) {
+//         case 0:
+//             if (record->event.pressed) {
+//                 register_code(KC_RSFT);
+//             }
+//             else {
+//                 unregister_code(KC_RSFT);
+//             }
+//             break;
+//     }
+//     return MACRO_NONE;
+// };
+
+/* Using combo feature for shift-to-capslock functionality. Switched to combo
+ * because my own function was not behaving as expected with mod-tap keys
+ */
+const uint16_t PROGMEM lsftrsft_combo[] = {KC_LSFT, KC_RSFT, COMBO_END};
+const uint16_t PROGMEM eu_gui_combo[] = {KC_E, KC_U, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+    [LR_CAPS] = COMBO(lsftrsft_combo, KC_CAPS),
+    [EU_GUI] = COMBO(eu_gui_combo, KC_LGUI)
 };
 
-/* Initializing variables needed for shift 2 capslock */
-bool is_lsft_pressed = false;    // left shift
-bool is_rsft_pressed = false;    // right shift
+/* Original shift-to-caps code. Replaced with above combo. Keeping for
+ * reference. - ECN
+ */
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    /* Toggle capslock when pressing both left and right shift keys
-     * LSFT2CP
-     * RSFT2CP
-     */
+// /* Initializing variables needed for shift 2 capslock */
+// bool is_lsft_pressed = false;    // left shift
+// bool is_rsft_pressed = false;    // right shift
+// 
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     /* Toggle capslock when pressing both left and right shift keys
+//      * LSFT2CP
+//      * RSFT2CP
+//      */
+//     switch (keycode) {
+//         case LSFT2CP:
+//             if (record->event.pressed) {
+//                 if (is_rsft_pressed) {
+//                     /* If is_rsft_pressed is true, send capslock */
+//                     register_code(KC_CAPS);
+//                 } else {
+//                     /* When left shift key is pressed, if is_rsft_pressed
+//                      * is false, set is_lsft_pressed to true and send shift
+//                      */
+//                     is_lsft_pressed = true;
+//                     register_code(KC_LSFT);
+//                 }
+//             } else {
+//                 /* When left shift key is released, set is_lsft_pressed
+//                  * to false, and keyup for capslock and shift
+//                  */
+//                 is_lsft_pressed = false;
+//                 unregister_code(KC_CAPS);
+//                 unregister_code(KC_LSFT);
+//             } 
+//             /* Skip all further processing of this key */
+//             return false;
+//         case RSFT2CP:
+//             if (record->event.pressed) {
+//                 if (is_lsft_pressed) {
+//                     /* If is_lsft_pressed is true, send capslock */
+//                     register_code(KC_CAPS);
+//                 } else {
+//                     /* When right shift key is pressed, if is_lsft_pressed
+//                      * is false, set is_rsft_pressed to true and send shift
+//                      */
+//                     is_rsft_pressed = true;
+//                     register_code(KC_RSFT);
+//                 }
+//             } else {
+//                 /* When right shift key is released, set is_rsft_pressed
+//                  * to false, and keyup for capslock and shift
+//                  */
+//                 is_rsft_pressed = false;
+//                 unregister_code(KC_CAPS);
+//                 unregister_code(KC_RSFT);
+//             }
+//             /* Skip all further processing of this key */
+//             return false; 
+//         default: 
+//             /* Process all other keycodes normally */
+//             return true;
+//     }
+// };
+
+/*
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LSFT2CP:
-            if (record->event.pressed) {
-                if (is_rsft_pressed) {
-                    /* If is_rsft_pressed is true, send capslock */
-                    register_code(KC_CAPS);
-                } else {
-                    /* When left shift key is pressed, if is_rsft_pressed
-                     * is false, set is_lsft_pressed to true and send shift
-                     */
-                    is_lsft_pressed = true;
-                    register_code(KC_LSFT);
-                }
-            } else {
-                /* When left shift key is released, set is_lsft_pressed
-                 * to false, and keyup for capslock and shift
-                 */
-                is_lsft_pressed = false;
-                unregister_code(KC_CAPS);
-                unregister_code(KC_LSFT);
-            } 
-            /* Skip all further processing of this key */
-            return false;
-        case RSFT2CP:
-            if (record->event.pressed) {
-                if (is_lsft_pressed) {
-                    /* If is_lsft_pressed is true, send capslock */
-                    register_code(KC_CAPS);
-                } else {
-                    /* When right shift key is pressed, if is_lsft_pressed
-                     * is false, set is_rsft_pressed to true and send shift
-                     */
-                    is_rsft_pressed = true;
-                    register_code(KC_RSFT);
-                }
-            } else {
-                /* When right shift key is released, set is_rsft_pressed
-                 * to false, and keyup for capslock and shift
-                 */
-                is_rsft_pressed = false;
-                unregister_code(KC_CAPS);
-                unregister_code(KC_RSFT);
-            }
-            /* Skip all further processing of this key */
-            return false; 
-        default: 
-            /* Process all other keycodes normally */
-            return true;
+        case SFT_T(KC_SPC):
+            return TAPPING_TERM + 1250;
+        case LT(1, KC_GRV):
+            return 130;
+        default:
+            return TAPPING_TERM;
     }
 };
+*/
+
+// vim:ai:ci:pi:et:sw=4:sts=4:ts=4:tw=78:norl:
 

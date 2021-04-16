@@ -1,4 +1,4 @@
-/* Copyright 2020 Edmund C. Ng
+/* Copyright 2019-2020 Edmund C. Ng
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,6 +43,7 @@
 //#define _ONEHAND_FLIP_DV 8
 
 /* Helpful defines */
+/* Layer-related */
 #define TT_QW TT(_QWERTY)                       // Tap Toggle Qwerty Layer
 #define TT_RST TT(_RESET_NUMPAD)                // Tap Toggle Reset/Num Layer
 #define M_PUNDV MO(_PUNCT_DV)                   // Momentary DV Punct layer
@@ -53,14 +54,7 @@
 #define OS_PUNQ OSL(_PUNCT_QW)                  // One shot QW Punct layer
 #define OS_NAVD OSL(_NAV_DV)                    // One shot DV Nav layer
 #define OS_NAVQ OSL(_NAV_QW)                    // One shot QW Nav layer
-#define CTL_ENT CTL_T(KC_ENT)                   // Ctrl on hold, Enter on tap
-#define CTL_ESC CTL_T(KC_ESC)                   // Ctrl on hold, Esc on tap
-#define CTL_TAB CTL_T(KC_TAB)                   // Ctrl on hold, Tab on tap
-#define GUI_ENT GUI_T(KC_ENT)                   // Gui on hold, Enter on tap
-#define GUI_TAB GUI_T(KC_TAB)                   // Gui on hold, Tab on tap
-#define C_HOME LCTL(KC_HOME)                    // Go to top of page
-#define C_END LCTL(KC_END)                      // Go to bottom of page
-#define OS_LALT OSM(MOD_LALT)                    // Gui on hold, Tab on tap
+#define LT_PD_X LT(_PUNCT_DV, KC_X)             // Momentary layer or tap key
 //#define TT_OHDV TT(_ONEHAND_DV)                 // Layer Tap Toggle
 //#define TT_OHDF TT(_ONEHAND_FLIP_DV)            // Layer Tap Toggle
 //#define M_OHFDV MO(_ONEHAND_FLIP_DV)            // Momentary activates layer
@@ -70,10 +64,40 @@
 //#define LT_OFTB LT(_ONEHAND_FLIP_DV, KC_TAB)    // Momentary layer or tap key
 //#define LT_OFET LT(_ONEHAND_FLIP_DV, KC_ENT)    // Momentary layer or tap key
 
-/* defining keycodes for LSft + RSft = CpLk */
-enum my_keycodes {
-    LSFT2CP = SAFE_RANGE,
-    RSFT2CP
+/* Modifier-related */
+#define CTL_ENT CTL_T(KC_ENT)                   // Ctrl on hold, Enter on tap
+#define CTL_ESC CTL_T(KC_ESC)                   // Ctrl on hold, Esc on tap
+#define CTL_TAB CTL_T(KC_TAB)                   // Ctrl on hold, Tab on tap
+#define GUI_ENT GUI_T(KC_ENT)                   // Gui on hold, Enter on tap
+#define GUI_TAB GUI_T(KC_TAB)                   // Gui on hold, Tab on tap
+#define C_HOME LCTL(KC_HOME)                    // Go to top of page
+#define C_END LCTL(KC_END)                      // Go to bottom of page
+#define OS_LSFT OSM(MOD_LSFT)                   // One shot Left Shift
+#define OS_RSFT OSM(MOD_RSFT)                   // One shot Right Shift
+#define OS_LALT OSM(MOD_LALT)                   // One shot Left Alt
+#define LSFT_SC LSFT_T(KC_SCLN)
+#define LALT__Q LALT_T(KC_Q)
+#define LCTL__J LCTL_T(KC_J)
+#define LGUI__K LGUI_T(KC_K)
+#define RGUI__M RGUI_T(KC_M)
+#define RCTL__W RCTL_T(KC_W)
+#define LALT__V LALT_T(KC_V)
+#define RSFT__Z RSFT_T(KC_Z)
+#define ALT_DEL LALT_T(KC_DEL)
+#define GUI_BSP LGUI_T(KC_BSPC)
+#define CTL_SPC RCTL_T(KC_SPC)
+
+/* defining keycodes for LSft + RSft = CpLk. Not needed anymore. Keeping for
+ * reference -- ECN
+ */
+// enum my_keycodes {
+//     LSFT2CP = SAFE_RANGE,
+//     RSFT2CP
+// };
+
+enum combos {
+    LR_CAPS,
+    EU_GUI
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -92,9 +116,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                             ,-------------.  ,-------------.
      *                                             | LGui | +L6  |  | PgUp | RGui |
      *                                      ,------|------|------|  |------+------+------.
-     *                                      | ~L4  | Ctrl | +L1  |  | PgDn | Gui  | ~L2  |
-     *                                      |      |      |------|  |------|      |      |
-     *                                      |  L2  | Tab  | G_Ent|  | C_Tab| Entr |  L4  |
+     *                                      |      | Ctrl | +L1  |  | PgDn | Gui  |      |
+     *                                      |OS(L4)|      |------|  |------|      |OS(L2)|
+     *                                      |      | Tab  | G_Ent|  | C_Tab| Entr |      |
      *                                      `--------------------'  `--------------------'
      */
     [_DVORAK] = LAYOUT_ergodox(  /* default, dvorak in keyboard, qwerty in OS, all LEDs off */
@@ -102,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         OS_LALT, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_GRV,
         KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_ESC,
         CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,
-        LSFT2CP, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_TAB,
+        KC_LSFT, LSFT_SC, LALT__Q, LCTL__J, LGUI__K, KC_X,    KC_TAB,
         XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  KC_BSPC,
                                                               KC_LGUI, TT_RST,
                                                                        TT_QW,
@@ -111,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_APP,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
                  KC_ESC,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_SLSH,
                           KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
-                 KC_TAB,  KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    RSFT2CP,
+                 KC_TAB,  KC_B,    RGUI__M, RCTL__W, LALT__V, RSFT__Z, KC_RSFT,
                                    KC_SPC,  KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX,
         KC_PGDN, KC_RGUI,
         KC_PGDN,
@@ -133,9 +157,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                             ,-------------.  ,-------------.
      *                                             | LGui | +L6  |  | PgUp | RGui |
      *                                      ,------|------|------|  |------+------+------.
-     *                                      | ~L5  | Ctrl | -L1  |  | PgDn | Gui  | ~L3  |
-     *                                      |      |      |------|  |------|      |      |
-     *                                      |  L3  | Tab  | G_Ent|  | C_Tab| Entr |  L5  |
+     *                                      |      | Ctrl | -L1  |  | PgDn | Gui  |      |
+     *                                      |OS(L5)|      |------|  |------|      |OS(L3)|
+     *                                      |      | Tab  | G_Ent|  | C_Tab| Entr |      |
      *                                      `--------------------'  `--------------------'
      */
     [_QWERTY] = LAYOUT_ergodox(  /* qwerty in keyboard, dvorak in OS; turn on LED 1 */
@@ -151,7 +175,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
                  _______, _______, _______, _______, _______, _______, KC_RBRC,
                  _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
-                          KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_MINS,
+                          KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
                  _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
                                    _______, _______, XXXXXXX, XXXXXXX, XXXXXXX,
         _______, _______,
@@ -163,35 +187,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------.                ,--------------------------------------------------.
      * |        | F1   | F2   | F3   | F4   | F5   | LSft |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
-     * |        |      |      | Up   | PgUp |      | Esc  |                | Esc  | `    | [    | ]    | {    | }    | F12    |
+     * |        | Eject| Prev | Play | Next |      | Esc  |                | Esc  | `    | [    | ]    | {    | }    | F12    |
      * |--------+------+------+------+------+------|      |                |      |------+------+------+------+------+--------|
-     * | C_Esc  | Home | Left | Down | Rght | \    |------|                |------| /    | -    | _    | (    | )    | C_Esc  |
+     * | C_Esc  |      |Vol Dn| Mute |Vol Up| \    |------|                |------| /    | -    | _    | (    | )    | C_Esc  |
      * |--------+------+------+------+------+------| \    |                | /    |------+------+------+------+------+--------|
-     * | LShift | End  |      |      | PgDn |      |      |                |      | ~    | =    | +    | |    | ?    | RShift |
+     * | LShift | Undo | Cut  | Copy | Paste|      |      |                |      | ~    | =    | +    | |    | ?    | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   |      |      |      |      | Spce |                                            | BkSp | Del  |      |      |      |
+     *   |      |      |      | G_Ent| Spce |                                            | BkSp | Del  |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
      *                                      ,------|------|------|  |------+------+------.
-     *                                      | ~L2  | Gui  |      |  |      | Ctrl | ~L2  |
-     *                                      |      |      |------|  |------|      |      |
-     *                                      |  L4  | Entr | C_Tab|  | G_Ent| Tab  |  L4  |
+     *                                      |      | Gui  |      |  |      | Ctrl |      |
+     *                                      | ~L4  |      |------|  |------|      |OS(L4)|
+     *                                      |      | Entr | Spce |  | G_Ent| Tab  |      |
      *                                      `--------------------'  `--------------------'
      */
     [_PUNCT_DV] = LAYOUT_ergodox(  /* punctpad, dvorak in keyboard, qwerty in OS; turn on LED 2 */
         // left hand
         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_LSFT,
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   KC_PGUP, XXXXXXX, KC_ESC,
-        _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_BSLS,
-        _______, KC_END,  XXXXXXX, XXXXXXX, KC_PGDN, XXXXXXX, KC_BSLS,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SPC, 
+        XXXXXXX, KC_EJCT, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, KC_ESC,
+        _______, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, KC_BSLS,
+        _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), XXXXXXX, KC_BSLS,
+        XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC,
                                                               XXXXXXX, XXXXXXX,
                                                                        XXXXXXX,
-                                                     OS_NAVD, GUI_ENT, CTL_TAB,
+                                                     M_NAVDV, GUI_ENT, KC_SPC,
         // right hand
-                 XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, 
-                 KC_ESC,  KC_GRV,  KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_F12, 
+                 XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+                 KC_ESC,  KC_GRV,  KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_F12,
                           KC_SLSH, KC_MINS, KC_UNDS, KC_LPRN, KC_RPRN, CTL_ESC,
                  KC_SLSH, KC_TILD, KC_EQL,  KC_PLUS, KC_PIPE, KC_QUES, _______,
                                    KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX,
@@ -204,20 +228,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------.                ,--------------------------------------------------.
      * |        | F1   | F2   | F3   | F4   | F5   | LSft |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
-     * |        |      |      | Up   | PgUp |      | Esc  |                | Esc  | `    | -    | =    | _    | +    | F12    |
+     * |        | Eject| Prev | Play | Next |      | Esc  |                | Esc  | `    | -    | =    | _    | +    | F12    |
      * |--------+------+------+------+------+------|      |                |      |------+------+------+------+------+--------|
-     * | C_Esc  | Home | Left | Down | Rght | \    |------|                |------| [    | '    | "    | (    | )    | C_Esc  |
+     * | C_Esc  |      |Vol Dn| Mute |Vol Up| \    |------|                |------| [    | '    | "    | (    | )    | C_Esc  |
      * |--------+------+------+------+------+------| \    |                | [    |------+------+------+------+------+--------|
-     * | LShift | End  |      |      | PgDn |      |      |                |      | ~    | ]    | }    | |    | {    | RShift |
+     * | LShift | Undo | Cut  | Copy | Paste|      |      |                |      | ~    | ]    | }    | |    | {    | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   |      |      |      |      | Spce |                                            | BkSp | Del  |      |      |      |
+     *   |      |      |      | G_Ent| Spce |                                            | BkSp | Del  |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
      *                                      ,------|------|------|  |------+------+------.
-     *                                      | ~L3  | Gui  |      |  |      | Ctrl | ~L3  |
-     *                                      |      |      |------|  |------|      |      |
-     *                                      |  L5  | Entr | C_Tab|  | G_Ent| Tab  |  L5  |
+     *                                      |      | Gui  |      |  |      | Ctrl |      |
+     *                                      | ~L5  |      |------|  |------|      |OS(L5)|
+     *                                      |      | Entr | C_Tab|  | G_Ent| Tab  |      |
      *                                      `--------------------'  `--------------------'
      */
     [_PUNCT_QW] = LAYOUT_ergodox(  /* punctpad, qwerty in keyboard, dvorak in OS; turn on LED 1 & 2 */
@@ -229,12 +253,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______,
                                                               _______, _______,
                                                                        _______,
-                                                     OS_NAVQ, _______, _______,
+                                                     M_NAVQW, _______, _______,
         // right hand
                  _______, _______, _______, _______, _______, _______, _______,
                  _______, _______, KC_MINS, KC_EQL,  KC_UNDS, KC_PLUS, _______,
                           KC_LBRC, KC_QUOT, KC_DQUO, KC_LPRN, KC_RPRN, _______,
-                 _______, _______, KC_RBRC, KC_RCBR, _______, KC_LCBR, _______,
+                 KC_LBRC, _______, KC_RBRC, KC_RCBR, _______, KC_LCBR, _______,
                                    _______, _______, _______, _______, _______,
         _______, _______,
         _______,
@@ -245,61 +269,61 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------.                ,--------------------------------------------------.
      * |        | F1   | F2   | F3   | F4   | F5   | LSft |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
-     * |        |      |      | Up   | PgUp |      | Esc  |                | Esc  | `    | (    | )    | ]    | }    | F12    |
+     * |        |C(Hom)|      | Up   | PgUp |C(End)| Esc  |                | Esc  | `    | (    | )    | ]    | }    | F12    |
      * |--------+------+------+------+------+------|      |                |      |------+------+------+------+------+--------|
      * | C_Esc  | Home | Left | Down | Rght | End  |------|                |------| /    | Left | Down | Up   | Rght | C_Esc  |
      * |--------+------+------+------+------+------| \    |                | /    |------+------+------+------+------+--------|
-     * | LShift |C(Hom)|      |      | PgDn |C(End)|      |                |      | ~    | -    | _    | |    | ?    | RShift |
+     * | LShift |      |      |      | PgDn | Tab  |      |                |      | ~    | -    | _    | |    | ?    | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
      *   |      |      |      | G_Ent| Spce |                                            | BkSp | Del  |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
      *                                      ,------|------|------|  |------+------+------.
-     *                                      | ~L4  | Gui  |      |  |      | Ctrl | ~L4  |
-     *                                      |      |      |------|  |------|      |      |
-     *                                      |  L2  | Entr | C_Tab|  | G_Ent| Tab  |  L2  |
+     *                                      |      | Gui  |      |  |      | Ctrl |      |
+     *                                      |OS(L2)|      |------|  |------|      | ~L2  |
+     *                                      |      | Entr | C_Tab|  | G_Ent| Tab  |      |
      *                                      `--------------------'  `--------------------'
      */
     [_NAV_DV] = LAYOUT_ergodox(  /* nav, dvorak in keyboard, qwerty in OS; turn on LED 3 */
         // left hand
         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_LSFT,
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   KC_PGUP, XXXXXXX, KC_ESC,
+        XXXXXXX, C_HOME,  XXXXXXX, KC_UP,   KC_PGUP, C_END,   KC_ESC,
         _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,
-        _______, C_HOME,  XXXXXXX, XXXXXXX, KC_PGDN, C_END,   KC_BSLS,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_TAB,  KC_BSLS,
         XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC, 
                                                               XXXXXXX, XXXXXXX,
                                                                        XXXXXXX,
                                                      OS_PUND, GUI_ENT, CTL_TAB,
         // right hand
-                 XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, 
-                 KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12, 
+                 XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+                 KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12,
                           KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTL_ESC,
                  KC_SLSH, KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
                                    KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX,
         XXXXXXX,
-        GUI_ENT, CTL_TAB, OS_PUND
+        GUI_ENT, CTL_TAB, M_PUNDV
     ),
 
     /* nav, qwerty in keyboard, dvorak in OS; turn on LED 1 & 3
      * ,--------------------------------------------------.                ,--------------------------------------------------.
      * |        | F1   | F2   | F3   | F4   | F5   | LSft |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
-     * |        |      |      | Up   | PgUp |      | Esc  |                | Esc  | `    | (    | )    | =    | +    | F12    |
+     * |        |C(Hom)|      | Up   | PgUp |C(End)| Esc  |                | Esc  | `    | (    | )    | =    | +    | F12    |
      * |--------+------+------+------+------+------|      |                |      |------+------+------+------+------+--------|
      * | C_Esc  | Home | Left | Down | Rght | End  |------|                |------| [    | Left | Down | Up   | Rght | C_Esc  |
      * |--------+------+------+------+------+------| \    |                | [    |------+------+------+------+------+--------|
-     * | LShift |C(Hom)|      |      | PgDn |C(End)|      |                |      | ~    | '    | "    | |    | {    | RShift |
+     * | LShift |      |      |      | PgDn | Tab  |      |                |      | ~    | '    | "    | |    | {    | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
      *   |      |      |      | G_Ent| Spce |                                            | BkSp | Del  |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
      *                                      ,------|------|------|  |------+------+------.
-     *                                      | ~L5  | Gui  |      |  |      | Ctrl | ~L5  |
-     *                                      |      |      |------|  |------|      |      |
-     *                                      |  L3  | Entr | C_Tab|  | G_Ent| Tab  |  L3  |
+     *                                      |      | Gui  |      |  |      | Ctrl |      |
+     *                                      |OS(L3)|      |------|  |------|      | ~L3  |
+     *                                      |      | Entr | C_Tab|  | G_Ent| Tab  |      |
      *                                      `--------------------'  `--------------------'
      */
     [_NAV_QW] = LAYOUT_ergodox(  /* nav, qwerty in keyboard, dvorak in OS; turn on LED 1 & 3 */
@@ -316,11 +340,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  _______, _______, _______, _______, _______, _______, _______,
                  _______, _______, KC_LPRN, KC_RPRN, KC_EQL,  KC_PLUS, _______,
                           KC_LBRC, _______, _______, _______, _______, _______,
-                 _______, _______, KC_QUOT, KC_DQUO, _______, KC_LCBR, _______,
+                 KC_LBRC, _______, KC_QUOT, KC_DQUO, _______, KC_LCBR, _______,
                                    _______, _______, _______, _______, _______,
         _______, _______,
         _______,
-        _______, _______, OS_PUNQ
+        _______, _______, M_PUNQW
     ),
 
      /* reset, and numpad; turn on no LEDs
@@ -393,21 +417,15 @@ void matrix_scan_user(void) {
             ergodox_right_led_1_on();
             ergodox_right_led_2_on();
             break;
-		case _NAV_DV:
-			// bottom LED - Nav layer
-			ergodox_right_led_3_on();
-			break;
-		case _NAV_QW:
-			// top & bottom LEDs - Qwerty & Nav layers
-            ergodox_right_led_1_on();
-			ergodox_right_led_3_on();
-			break;
-		/*
-        case _RESET_NUMPAD:
-            // teensy LED - NumPad & BootLoader layer
-            ergodox_board_led_on();
+        case _NAV_DV:
+            // bottom LED - Nav layer
+            ergodox_right_led_3_on();
             break;
-		*/
+        case _NAV_QW:
+            // top & bottom LEDs - Qwerty & Nav layers
+            ergodox_right_led_1_on();
+            ergodox_right_led_3_on();
+            break;
         default:
             // none - Dvorak layer
             break;
@@ -419,80 +437,95 @@ void matrix_scan_user(void) {
     }
 };
 
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
-    // MACRODOWN only works in this function
-    switch(id) {
-        case 0:
-            if (record->event.pressed) {
-                register_code(KC_RSFT);
-            } else {
-                unregister_code(KC_RSFT);
-            }
-            break;
-    }
-    return MACRO_NONE;
+// const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
+//     // MACRODOWN only works in this function
+//     switch(id) {
+//         case 0:
+//             if (record->event.pressed) {
+//                 register_code(KC_RSFT);
+//             } else {
+//                 unregister_code(KC_RSFT);
+//             }
+//             break;
+//     }
+//     return MACRO_NONE;
+// };
+
+/* Using combo feature for shift-to-capslock functionality. Switched to combo
+ * because my own function was not behaving as expected with mod-tap keys
+ */
+const uint16_t PROGMEM lsftrsft_combo[] = {KC_LSFT, KC_RSFT, COMBO_END};
+const uint16_t PROGMEM eu_gui_combo[] = {KC_E, KC_U, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+    [LR_CAPS] = COMBO(lsftrsft_combo, KC_CAPS),
+    [EU_GUI] = COMBO(eu_gui_combo, KC_LGUI)
 };
 
-/* Initializing variables needed for shift 2 capslock */
-bool is_lsft_pressed = false;    // left shift
-bool is_rsft_pressed = false;    // right shift
+/* Original shift-to-caps code. Replaced with above combo. Keeping for
+ * reference. - ECN
+ */
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    /* Toggle capslock when pressing both left and right shift keys
-     * LSFT2CP
-     * RSFT2CP
-     */
-    switch (keycode) {
-        case LSFT2CP:
-            if (record->event.pressed) {
-                if (is_rsft_pressed) {
-                    /* If is_rsft_pressed is true, send capslock */
-                    register_code(KC_CAPS);
-                } else {
-                    /* When left shift key is pressed, if is_rsft_pressed
-                     * is false, set is_lsft_pressed to true and send shift
-                     */
-                    is_lsft_pressed = true;
-                    register_code(KC_LSFT);
-                }
-            } else {
-                /* When left shift key is released, set is_lsft_pressed
-                 * to false, and keyup for capslock and shift
-                 */
-                is_lsft_pressed = false;
-                unregister_code(KC_CAPS);
-                unregister_code(KC_LSFT);
-            } 
-            /* Skip all further processing of this key */
-            return false;
-        case RSFT2CP:
-            if (record->event.pressed) {
-                if (is_lsft_pressed) {
-                    /* If is_lsft_pressed is true, send capslock */
-                    register_code(KC_CAPS);
-                } else {
-                    /* When right shift key is pressed, if is_lsft_pressed
-                     * is false, set is_rsft_pressed to true and send shift
-                     */
-                    is_rsft_pressed = true;
-                    register_code(KC_RSFT);
-                }
-            } else {
-                /* When right shift key is released, set is_rsft_pressed
-                 * to false, and keyup for capslock and shift
-                 */
-                is_rsft_pressed = false;
-                unregister_code(KC_CAPS);
-                unregister_code(KC_RSFT);
-            }
-            /* Skip all further processing of this key */
-            return false; 
-        default: 
-            /* Process all other keycodes normally */
-            return true;
-    }
-};
+// /* Initializing variables needed for shift 2 capslock */
+// bool is_lsft_pressed = false;    // left shift
+// bool is_rsft_pressed = false;    // right shift
+// 
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     /* Toggle capslock when pressing both left and right shift keys
+//      * LSFT2CP
+//      * RSFT2CP
+//      */
+//     switch (keycode) {
+//         case LSFT2CP:
+//             if (record->event.pressed) {
+//                 if (is_rsft_pressed) {
+//                     /* If is_rsft_pressed is true, send capslock */
+//                     register_code(KC_CAPS);
+//                 } else {
+//                     /* When left shift key is pressed, if is_rsft_pressed
+//                      * is false, set is_lsft_pressed to true and send shift
+//                      */
+//                     is_lsft_pressed = true;
+//                     register_code(KC_LSFT);
+//                 }
+//             } else {
+//                 /* When left shift key is released, set is_lsft_pressed
+//                  * to false, and keyup for capslock and shift
+//                  */
+//                 is_lsft_pressed = false;
+//                 unregister_code(KC_CAPS);
+//                 unregister_code(KC_LSFT);
+//             } 
+//             /* Skip all further processing of this key */
+//             return false;
+//         case RSFT2CP:
+//             if (record->event.pressed) {
+//                 if (is_lsft_pressed) {
+//                     /* If is_lsft_pressed is true, send capslock */
+//                     register_code(KC_CAPS);
+//                 } else {
+//                     /* When right shift key is pressed, if is_lsft_pressed
+//                      * is false, set is_rsft_pressed to true and send shift
+//                      */
+//                     is_rsft_pressed = true;
+//                     register_code(KC_RSFT);
+//                 }
+//             } else {
+//                 /* When right shift key is released, set is_rsft_pressed
+//                  * to false, and keyup for capslock and shift
+//                  */
+//                 is_rsft_pressed = false;
+//                 unregister_code(KC_CAPS);
+//                 unregister_code(KC_RSFT);
+//             }
+//             /* Skip all further processing of this key */
+//             return false; 
+//         default: 
+//             /* Process all other keycodes normally */
+//             return true;
+//     }
+// };
 
+/*
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case SFT_T(KC_SPC):
@@ -503,4 +536,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 };
+*/
+
+// vim:ai:ci:pi:et:sw=4:sts=4:ts=4:tw=78:norl:
 
