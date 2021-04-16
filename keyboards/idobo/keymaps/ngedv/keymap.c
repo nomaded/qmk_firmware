@@ -185,20 +185,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------------------------------------------------------------.
      * |      | F1   | F2   | F3   | F4   | F5   |      |      |      | F6   | F7   | F8   | F9   | F10  | F11  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | Up   | PgUp |      | Esc  |      | Esc  | `    | (    | )    | ]    | }    | F12  |
+     * |      |C(Home)      | Up   | PgUp |C(End)| Esc  |      | Esc  | `    | (    | )    | ]    | }    | F12  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | C_Esc| Home | Left | Down | Rght | End  | LGui |      | RGui | /    | Left | Down | Up   | Rght | C_Esc|
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft |C(Hom)|      |      | PgDn |C(End)| \    |      | /    | ~    | -    | _    | |    | ?    | RSft |
+     * | LSft |      |      |      | PgDn | Tab  | \    |      | /    | ~    | -    | _    | |    | ?    | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      | G_Ent| Spce |OS(L2)| G_Ent|      | C_Tab| ~L2  | BkSp | Del  |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_NAV_DV] = LAYOUT_ortho_5x15( /* nav, dvorak in keyboard, qwerty in OS */
         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   KC_PGUP, XXXXXXX, KC_ESC,  XXXXXXX, KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12,
+        XXXXXXX, C_HOME,  XXXXXXX, KC_UP,   KC_PGUP, C_END,   KC_ESC,  XXXXXXX, KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12,
         _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_LGUI, XXXXXXX, KC_RGUI, KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
-        _______, C_HOME,  XXXXXXX, XXXXXXX, KC_PGDN, C_END,   KC_BSLS, XXXXXXX, KC_SLSH, KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_TAB,  KC_BSLS, XXXXXXX, KC_SLSH, KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
         XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC,  OS_PUND, GUI_ENT, XXXXXXX, CTL_TAB, OS_PUND, KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
@@ -206,11 +206,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------------------------------------------------------------.
      * |      | F1   | F2   | F3   | F4   | F5   |      |      |      | F6   | F7   | F8   | F9   | F10  | F11  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | Up   | PgUp |      | Esc  |      | Esc  | `    | (    | )    | =    | +    | F12  |
+     * |      |C(Hom)|      | Up   | PgUp |C(End)| Esc  |      | Esc  | `    | (    | )    | =    | +    | F12  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | C_Esc| Home | Left | Down | Rght | End  | LGui |      | RGui | [    | Left | Down | Up   | Rght | C_Esc|
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft |C(Hom)|      |      | PgDn |C(End)| \    |      | [    | ~    | '    | "    | |    | {    | RSft |
+     * | LSft |      |      |      | PgDn | Tab  | \    |      | [    | ~    | '    | "    | |    | {    | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |      |      | G_Ent| Spce |OS(L3)| G_Ent|      | C_Tab| ~L3  | BkSp | Del  |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
