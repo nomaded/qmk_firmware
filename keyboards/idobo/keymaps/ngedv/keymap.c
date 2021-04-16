@@ -1,4 +1,4 @@
-/* Copyright 2020 Edmund C. Ng
+/* Copyright 2021 Edmund C. Ng
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -379,6 +379,38 @@ combo_t key_combos[COMBO_COUNT] = {
     [LR_CAPS] = COMBO(lsftrsft_combo, KC_CAPS),
     [EU_GUI] = COMBO(eu_gui_combo, KC_LGUI)
 };
+
+/* Code to cancel out oneshot state with escape key. Code copied from:
+ * https://github.com/qmk/qmk_firmware/blob/master/users/dshields/dshields.c
+ */
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if ((keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX)
+            || (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX)
+            || (keycode >= QK_MODS && keycode <= QK_MODS_MAX)) {
+        keycode = keycode & 0xFF;
+    }
+    if (keycode == KC_ESC && record->event.pressed) {
+        bool rc = true;
+        uint8_t mods = 0;
+        if ((mods = get_oneshot_mods()) && !has_oneshot_mods_timed_out()) {
+            clear_oneshot_mods();
+            unregister_mods(mods);
+            rc = false;
+        }
+        if ((mods = get_oneshot_locked_mods())) {
+            clear_oneshot_locked_mods();
+            unregister_mods(mods);
+            rc = false;
+        }
+        if (is_oneshot_layer_active()) {
+            layer_clear();
+            rc = false;
+        }
+        return rc;
+    }
+    return true;
+}
 
 /* Original shift-to-caps code. Replaced with above combo. Keeping for
  * reference. - ECN
