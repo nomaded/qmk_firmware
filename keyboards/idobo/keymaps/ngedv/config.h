@@ -24,15 +24,20 @@
 #undef TAPPING_TOGGLE
 #define TAPPING_TOGGLE 3
 #undef ONESHOT_TAP_TOGGLE
-#define ONESHOT_TAP_TOGGLE 5 /* Number of taps to hold key, tap to release */
+#define ONESHOT_TAP_TOGGLE 5     // Number of taps to hold key, tap to release
 #undef ONESHOT_TIMEOUT
-#define ONESHOT_TIMEOUT 5000 /* Time (ms) before one shot key is released */
+#define ONESHOT_TIMEOUT 1500     // Time (ms) before one shot key is released
 #undef TAPPING_TERM
-#define TAPPING_TERM 150 /* Global time (ms) to trigger hold vs tap */
-#define TAPPING_TERM_PER_KEY
-#define PERMISSIVE_HOLD /* Mod tap keys as a Mod if another key is tapped */
+#define TAPPING_TERM 200         // Global time (ms) to trigger hold vs tap
+#undef TAPPING_TERM_PER_KEY
+//#define TAPPING_TERM_PER_KEY
+#undef PERMISSIVE_HOLD          // Mod Tap keys as Mod if another key tapped
+//#define PERMISSIVE_HOLD        // Mod Tap keys as Mod if another key tapped
+#define IGNORE_MOD_TAP_INTERRUPT // Hold both keys for TAPPING_TERM for hold
 #undef IS_COMMAND
 #define IS_COMMAND() (get_mods() == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT)))
 //#define AUTO_SHIFT_TIMEOUT 150
 //#define NO_AUTO_SHIFT_SPECIAL
+#define COMBO_COUNT 2
+#define COMBO_TERM 200
 
