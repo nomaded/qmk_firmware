@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | LSft | ; :  | q Q  | j J  | k K  | x X  | ,------. ,------. | b B  | m M  | w W  | v V  | z Z  | RSft |
      * `-----------------------------------------' | LGui | | RGui | `-----------------------------------------'
      *                               ,-------------+------| |------+-------------.
-     *                               | Bksp |OS(L4)| C_Del| | G_Ent|OS(L2)| Spce |
+     *                               | Bksp |OS(L4)| C_Tab| | G_Ent|OS(L2)| Spce |
      *                               `--------------------' `--------------------'
      */
     [_DVORAK] = LAYOUT_centromere_plus( /* default, dvorak in keyboard, qwerty in OS */
@@ -116,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TT_RST,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_ESC,           KC_ESC,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    TT_QW,
         CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_TAB,           KC_TAB,  KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
         KC_LSFT, LSFT_SC, LALT__Q, LCTL__J, LGUI__K, KC_X,       KC_LGUI,   KC_RGUI,     KC_B,    RGUI__M, RCTL__W, LALT__V, RSFT__Z, KC_RSFT,
-                                               KC_BSPC, OS_NAVD, CTL_DEL,   GUI_ENT, OS_PUND, KC_SPC
+                                               KC_BSPC, OS_NAVD, CTL_TAB,   GUI_ENT, OS_PUND, KC_SPC
     ),
 
     /* qwerty in keyboard, dvorak in OS
@@ -130,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | LSft | z Z  | x X  | c C  | v V  | b B  | ,------. ,------. | n N  | m M  | , <  | . >  | / ?  | RSft |
      * `-----------------------------------------' | LGui | | RGui | `--+---+--+-------------------------------'
      *                               ,-------------+------| |------+-------------'
-     *                               | Bksp |OS(L5)| C_Del| | G_Ent|OS(L3)| Spce |
+     *                               | Bksp |OS(L5)| C_Tab| | G_Ent|OS(L3)| Spce |
      *                               `--------------------' `--------------------'
      */
     [_QWERTY] = LAYOUT_centromere_plus( /* qwerty in keyboard, dvorak in OS */
@@ -196,7 +196,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | LSft |      |      |      | PgDn | Tab  | ,------. ,------. | ~    | -    | _    | |    | ?    | RSft |
      * `-----------------------------------------' | LGui | | RGui | `-----------------------------------------'
      *                               ,-------------+------| |------+-------------.
-     *                               | Spce |OS(L2)| G_Ent| | C_Del| ~L2  | Bksp |
+     *                               | Del  |OS(L2)| G_Ent| | C_Del| ~L2  | Bksp |
      *                               `--------------------' `--------------------'
      */
     [_NAV_DV] = LAYOUT_centromere_plus( /* nav, dvorak in keyboard, qwerty in OS */
@@ -204,7 +204,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, C_HOME,  XXXXXXX, KC_UP,   KC_PGUP, C_END,   KC_ESC,           KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12,
         _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_TAB,           KC_TAB,  KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
         _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_TAB,     KC_LGUI,    KC_RGUI,    KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
-                                               KC_SPC,  OS_PUND, GUI_ENT,    CTL_DEL, M_PUNDV, KC_BSPC
+                                               KC_DEL,  OS_PUND, GUI_ENT,    CTL_DEL, M_PUNDV, KC_BSPC
     ),
 
     /* nav, qwerty in keyboard, dvorak in OS
@@ -218,7 +218,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | LSft |      |      |      | PgDn | Tab  | ,------. ,------. | ~    | '    | "    | |    | {    | RSft |
      * `-----------------------------------------' | LGui | | RGui | `-----------------------------------------'
      *                               ,-------------+------| |------+-------------.
-     *                               | Spce |OS(L3)| G_Ent| | C_Del| ~L3  | Bksp |
+     *                               | Del  |OS(L3)| G_Ent| | C_Del| ~L3  | Bksp |
      *                               `--------------------' `--------------------'
      */
     [_NAV_QW] = LAYOUT_centromere_plus( /* nav, qwerty in keyboard, dvorak in OS */

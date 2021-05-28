@@ -28,7 +28,7 @@
 #undef ONESHOT_TIMEOUT
 #define ONESHOT_TIMEOUT 1500     // Time (ms) before one shot key is released
 #undef TAPPING_TERM
-#define TAPPING_TERM 300         // Global time (ms) to trigger hold vs tap
+#define TAPPING_TERM 200         // Global time (ms) to trigger hold vs tap
 #undef TAPPING_TERM_PER_KEY
 //#define TAPPING_TERM_PER_KEY
 //#define PERMISSIVE_HOLD          // Mod Tap keys as Mod if another key tapped
