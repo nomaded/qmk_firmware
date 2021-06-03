@@ -68,6 +68,7 @@
 #define CTL_ENT CTL_T(KC_ENT)                   // Ctrl on hold, Enter on tap
 #define CTL_ESC CTL_T(KC_ESC)                   // Ctrl on hold, Esc on tap
 #define CTL_TAB CTL_T(KC_TAB)                   // Ctrl on hold, Tab on tap
+#define CTL_DEL LCTL_T(KC_DEL)                  // Ctrl on hold, Delete on tap
 #define GUI_ENT GUI_T(KC_ENT)                   // Gui on hold, Enter on tap
 #define GUI_TAB GUI_T(KC_TAB)                   // Gui on hold, Tab on tap
 #define C_HOME LCTL(KC_HOME)                    // Go to top of page
@@ -111,10 +112,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| Tab  |                | Tab  |------+------+------+------+------+--------|
      * | LShift | ; :  | q Q  | j J  | k K  | x X  |      |                |      | b B  | m M  | w W  | v V  | z Z  | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   |      |      |      | Del  | BkSp |                                            | Spce | RAlt |      |      |      |
+     *   |      |      |      |      | BkSp |                                            | Spce |      |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
-     *                                             | LGui | +L6  |  | PgUp | RGui |
+     *                                             | G_Ent| +L6  |  | PgUp | C_Tab|
      *                                      ,------|------|------|  |------+------+------.
      *                                      |      | Ctrl | +L1  |  | PgDn | Gui  |      |
      *                                      |OS(L4)|      |------|  |------|      |OS(L2)|
@@ -127,8 +128,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_ESC,
         CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,
         KC_LSFT, LSFT_SC, LALT__Q, LCTL__J, LGUI__K, KC_X,    KC_TAB,
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  KC_BSPC,
-                                                              KC_LGUI, TT_RST,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
+                                                              GUI_ENT, TT_RST,
                                                                        TT_QW,
                                                      OS_NAVD, CTL_TAB, GUI_ENT,
         // right hand
@@ -136,8 +137,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_ESC,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_SLSH,
                           KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
                  KC_TAB,  KC_B,    RGUI__M, RCTL__W, LALT__V, RSFT__Z, KC_RSFT,
-                                   KC_SPC,  KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX,
-        KC_PGDN, KC_RGUI,
+                                   KC_SPC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_PGDN, CTL_TAB,
         KC_PGDN,
         CTL_TAB, GUI_ENT, OS_PUND
     ),
@@ -152,10 +153,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| Tab  |                | Tab  |------+------+------+------+------+--------|
      * | LShift | z Z  | x X  | c C  | v V  | b B  |      |                |      | n N  | m M  | , <  | . >  | / ?  | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   |      |      |      | Del  | BkSp |                                            | Spce | RAlt |      |      |      |
+     *   |      |      |      |      | BkSp |                                            | Spce |      |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
-     *                                             | LGui | +L6  |  | PgUp | RGui |
+     *                                             | G_Ent| +L6  |  | PgUp | C_Tab|
      *                                      ,------|------|------|  |------+------+------.
      *                                      |      | Ctrl | -L1  |  | PgDn | Gui  |      |
      *                                      |OS(L5)|      |------|  |------|      |OS(L3)|
@@ -168,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    _______,
         _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
         _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    _______,
-        XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
                                                               _______, _______,
                                                                        _______,
                                                      OS_NAVQ, _______, _______,
@@ -177,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
                           KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
                  _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
-                                   _______, _______, XXXXXXX, XXXXXXX, XXXXXXX,
+                                   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         _______, _______,
         _______,
         _______, _______, OS_PUNQ
@@ -185,7 +186,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* punctpad, dvorak in keyboard, qwerty in OS; turn on LED 2
      * ,--------------------------------------------------.                ,--------------------------------------------------.
-     * |        | F1   | F2   | F3   | F4   | F5   | LSft |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
+     * |        | F1   | F2   | F3   | F4   | F5   |      |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
      * |        | Eject| Prev | Play | Next |      | Esc  |                | Esc  | `    | [    | ]    | {    | }    | F12    |
      * |--------+------+------+------+------+------|      |                |      |------+------+------+------+------+--------|
@@ -193,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| \    |                | /    |------+------+------+------+------+--------|
      * | LShift | Undo | Cut  | Copy | Paste|      |      |                |      | ~    | =    | +    | |    | ?    | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   |      |      |      | G_Ent| Spce |                                            | BkSp | Del  |      |      |      |
+     *   |      |      |      |      | Del  |                                            | Spce |      |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
@@ -205,11 +206,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_PUNCT_DV] = LAYOUT_ergodox(  /* punctpad, dvorak in keyboard, qwerty in OS; turn on LED 2 */
         // left hand
-        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_LSFT,
+        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX,
         XXXXXXX, KC_EJCT, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, KC_ESC,
         _______, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, KC_BSLS,
         _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), XXXXXXX, KC_BSLS,
-        XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,
                                                               XXXXXXX, XXXXXXX,
                                                                        XXXXXXX,
                                                      M_NAVDV, GUI_ENT, KC_SPC,
@@ -218,7 +219,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_ESC,  KC_GRV,  KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_F12,
                           KC_SLSH, KC_MINS, KC_UNDS, KC_LPRN, KC_RPRN, CTL_ESC,
                  KC_SLSH, KC_TILD, KC_EQL,  KC_PLUS, KC_PIPE, KC_QUES, _______,
-                                   KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX,
+                                   KC_SPC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX,
         XXXXXXX,
         GUI_ENT, CTL_TAB, OS_NAVD
@@ -226,7 +227,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* punctpad, qwerty in keyboard, dvorak in OS; turn on LED 1 & 2
      * ,--------------------------------------------------.                ,--------------------------------------------------.
-     * |        | F1   | F2   | F3   | F4   | F5   | LSft |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
+     * |        | F1   | F2   | F3   | F4   | F5   |      |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
      * |        | Eject| Prev | Play | Next |      | Esc  |                | Esc  | `    | -    | =    | _    | +    | F12    |
      * |--------+------+------+------+------+------|      |                |      |------+------+------+------+------+--------|
@@ -234,14 +235,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| \    |                | [    |------+------+------+------+------+--------|
      * | LShift | Undo | Cut  | Copy | Paste|      |      |                |      | ~    | ]    | }    | |    | {    | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   |      |      |      | G_Ent| Spce |                                            | BkSp | Del  |      |      |      |
+     *   |      |      |      |      | Del  |                                            | Spce |      |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
      *                                      ,------|------|------|  |------+------+------.
      *                                      |      | Gui  |      |  |      | Ctrl |      |
      *                                      | ~L5  |      |------|  |------|      |OS(L5)|
-     *                                      |      | Entr | C_Tab|  | G_Ent| Tab  |      |
+     *                                      |      | Entr | Spce |  | G_Ent| Tab  |      |
      *                                      `--------------------'  `--------------------'
      */
     [_PUNCT_QW] = LAYOUT_ergodox(  /* punctpad, qwerty in keyboard, dvorak in OS; turn on LED 1 & 2 */
@@ -267,63 +268,63 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* nav, dvorak in keyboard, qwerty in OS; turn on LED 3
      * ,--------------------------------------------------.                ,--------------------------------------------------.
-     * |        | F1   | F2   | F3   | F4   | F5   | LSft |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
+     * |        | F1   | F2   | F3   | F4   | F5   |      |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
      * |        |C(Hom)|      | Up   | PgUp |C(End)| Esc  |                | Esc  | `    | (    | )    | ]    | }    | F12    |
      * |--------+------+------+------+------+------|      |                |      |------+------+------+------+------+--------|
      * | C_Esc  | Home | Left | Down | Rght | End  |------|                |------| /    | Left | Down | Up   | Rght | C_Esc  |
      * |--------+------+------+------+------+------| \    |                | /    |------+------+------+------+------+--------|
-     * | LShift |      |      |      | PgDn | Tab  |      |                |      | ~    | -    | _    | |    | ?    | RShift |
+     * | LShift |      |      |      | PgDn | Del  |      |                |      | ~    | Home | PgDn | PgUp | End  | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   |      |      |      | G_Ent| Spce |                                            | BkSp | Del  |      |      |      |
+     *   |      |      |      |      | Spce |                                            | BkSp |      |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
      *                                      ,------|------|------|  |------+------+------.
      *                                      |      | Gui  |      |  |      | Ctrl |      |
      *                                      |OS(L2)|      |------|  |------|      | ~L2  |
-     *                                      |      | Entr | C_Tab|  | G_Ent| Tab  |      |
+     *                                      |      | Entr | C_Tab|  | G_Ent| Del  |      |
      *                                      `--------------------'  `--------------------'
      */
     [_NAV_DV] = LAYOUT_ergodox(  /* nav, dvorak in keyboard, qwerty in OS; turn on LED 3 */
         // left hand
-        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_LSFT,
+        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX,
         XXXXXXX, C_HOME,  XXXXXXX, KC_UP,   KC_PGUP, C_END,   KC_ESC,
         _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_TAB,  KC_BSLS,
-        XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC, 
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_DEL,  KC_BSLS,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SPC,
                                                               XXXXXXX, XXXXXXX,
                                                                        XXXXXXX,
                                                      OS_PUND, GUI_ENT, CTL_TAB,
         // right hand
                  XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
                  KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12,
-                          KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CTL_ESC,
-                 KC_SLSH, KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
-                                   KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX,
+                          KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
+                 KC_SLSH, KC_TILD, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
+                                   KC_BSPC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX,
         XXXXXXX,
-        GUI_ENT, CTL_TAB, M_PUNDV
+        GUI_ENT, CTL_DEL, M_PUNDV
     ),
 
     /* nav, qwerty in keyboard, dvorak in OS; turn on LED 1 & 3
      * ,--------------------------------------------------.                ,--------------------------------------------------.
-     * |        | F1   | F2   | F3   | F4   | F5   | LSft |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
+     * |        | F1   | F2   | F3   | F4   | F5   |      |                |      | F6   | F7   | F8   | F9   | F10  | F11    |
      * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
      * |        |C(Hom)|      | Up   | PgUp |C(End)| Esc  |                | Esc  | `    | (    | )    | =    | +    | F12    |
      * |--------+------+------+------+------+------|      |                |      |------+------+------+------+------+--------|
      * | C_Esc  | Home | Left | Down | Rght | End  |------|                |------| [    | Left | Down | Up   | Rght | C_Esc  |
      * |--------+------+------+------+------+------| \    |                | [    |------+------+------+------+------+--------|
-     * | LShift |      |      |      | PgDn | Tab  |      |                |      | ~    | '    | "    | |    | {    | RShift |
+     * | LShift |      |      |      | PgDn | Del  |      |                |      | ~    | Home | PgDn | PgUp | End  | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   |      |      |      | G_Ent| Spce |                                            | BkSp | Del  |      |      |      |
+     *   |      |      |      |      | Spce |                                            | BkSp |      |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             |      |      |  |      |      |
      *                                      ,------|------|------|  |------+------+------.
      *                                      |      | Gui  |      |  |      | Ctrl |      |
      *                                      |OS(L3)|      |------|  |------|      | ~L3  |
-     *                                      |      | Entr | C_Tab|  | G_Ent| Tab  |      |
+     *                                      |      | Entr | C_Tab|  | G_Ent| Del  |      |
      *                                      `--------------------'  `--------------------'
      */
     [_NAV_QW] = LAYOUT_ergodox(  /* nav, qwerty in keyboard, dvorak in OS; turn on LED 1 & 3 */
@@ -340,7 +341,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  _______, _______, _______, _______, _______, _______, _______,
                  _______, _______, KC_LPRN, KC_RPRN, KC_EQL,  KC_PLUS, _______,
                           KC_LBRC, _______, _______, _______, _______, _______,
-                 KC_LBRC, _______, KC_QUOT, KC_DQUO, _______, KC_LCBR, _______,
+                 KC_LBRC, _______, _______, _______, _______, _______, _______,
                                    _______, _______, _______, _______, _______,
         _______, _______,
         _______,
@@ -349,40 +350,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
      /* reset, and numpad; turn on no LEDs
      * ,--------------------------------------------------.                ,--------------------------------------------------.
-     * |        |      |Vol Dn|Vol Up| Mute |      | Rst  |                | NmLk |      |      | Np / | Np * | Np - | ScrLk  |
-     * |--------+------+------+------+------+-------------|                |------+------+------+------+------+------+--------|
-     * |        |      |      | Up   |      |      |      |                |      |      | Np 7 | Np 8 | Np 9 | Np + | PrtScn |
+     * |        | Np - | Np * | Np / | NmLk |      | Reset|                | NmLk |      |      | Np / | Np * | Np - | ScrLk  |
+     * |--------+------+------+------+------+------+------|                |------+------+------+------+------+------+--------|
+     * |        | Np + | Np 9 | Np 8 | Np 7 |      |      |                |      |      | Np 7 | Np 8 | Np 9 | Np + | PrtScn |
      * |--------+------+------+------+------+------|      |                |      |------+------+------+------+------+--------|
-     * | C_Esc  |      | Left | Down | Rght |      |------|                |------|      | Np 4 | Np 5 | Np 6 | Np + | Pause  |
-     * |--------+------+------+------+------+------|      |                |      |------+------+------+------+------+--------|
-     * | LShift |      |      |      |      |      |      |                |      | Np 0 | Np 1 | Np 2 | Np 3 | Np . | RShift |
+     * | C_Esc  | Np = | Np 6 | Np 5 | Np 4 |      |------|                |------|      | Np 4 | Np 5 | Np 6 | Np + | Pause  |
+     * |--------+------+------+------+------+------| Gui  |                | Ctrl |------+------+------+------+------+--------|
+     * | LShift | Np . | Np 3 | Np 2 | Np 1 | Np 0 | Entr |                | Tab  | Np 0 | Np 1 | Np 2 | Np 3 | Np . | RShift |
      * `--------+------+------+------+------+-------------'                `-------------+------+------+------+------+--------'
-     *   |      |      |      | Del  | BkSp |                                            | Spce | G_Ent|      |      |      |
+     *   |      |      |      |      | BkSp |                                            | Spce |      |      |      |      |
      *   `----------------------------------'                                            `----------------------------------'
      *                                             ,-------------.  ,-------------.
      *                                             |      | -L6  |  |      |      |
      *                                      ,------|------|------|  |------+------+------.
-     *                                      |      | Ctrl |      |  |      |      |      |
-     *                                      |      |      |------|  |------|Np Ent| Np 0 |
-     *                                      |      | Tab  |      |  |      |      |      |
+     *                                      |NumPad|NumPad|      |  |      |NumPad|NumPad|
+     *                                      |      |      |------|  |------|      |      |
+     *                                      |  0   | Entr |      |  |      | Ent  |  0   |
      *                                      `--------------------'  `--------------------'
      */
     [_RESET_NUMPAD] = LAYOUT_ergodox(  /* reset, and numpad; turn on teensy LED */
         // left hand
-        XXXXXXX, XXXXXXX, KC_VOLD, KC_VOLU, KC_MUTE, XXXXXXX, RESET,
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX, XXXXXXX,
-        CTL_ESC, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  KC_BSPC,
+        XXXXXXX, KC_PMNS, KC_PAST, KC_PSLS, KC_NLCK, XXXXXXX, RESET,
+        XXXXXXX, KC_PPLS, KC_P9,   KC_P8,   KC_P7,   XXXXXXX, XXXXXXX,
+        _______, KC_PEQL, KC_P6,   KC_P5,   KC_P4,   XXXXXXX,
+        _______, KC_PDOT, KC_P3,   KC_P2,   KC_P1,   KC_P0,   GUI_ENT,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
                                                               XXXXXXX, _______,
                                                                        XXXXXXX,
-                                                     XXXXXXX, CTL_TAB, XXXXXXX,
+                                                     KC_P0,   KC_PENT, XXXXXXX,
         // right hand
                  KC_NLCK, XXXXXXX, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, KC_SLCK,
                  XXXXXXX, XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSCR,
                           XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
-                 XXXXXXX, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
-                                   KC_SPC,  GUI_ENT, XXXXXXX, XXXXXXX, XXXXXXX,
+                 CTL_TAB, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
+                                   KC_SPC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX,
         XXXXXXX,
         XXXXXXX, KC_PENT, KC_P0

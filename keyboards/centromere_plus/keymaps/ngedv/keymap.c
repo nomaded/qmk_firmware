@@ -71,6 +71,8 @@
 #define C_HOME LCTL(KC_HOME)                    // Go to top of page
 #define C_END LCTL(KC_END)                      // Go to bottom of page
 #define OS_LALT OSM(MOD_LALT)                   // One shot Left Alt
+#define OS_LSFT OSM(MOD_LSFT)                   // One shot Left Shift
+#define OS_RSFT OSM(MOD_RSFT)                   // One shot Right Shift
 #define LSFT_SC LSFT_T(KC_SCLN)
 #define LALT__Q LALT_T(KC_Q)
 #define LCTL__J LCTL_T(KC_J)
@@ -106,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | C_Esc| a A  | o O  | e E  | u U  | i I  | Tab  |     | Tab  | d D  | h H  | t T  | n N  | s S  | - _  |
      * |------+------+------+------+------+------+------'     `------+------+------+------+------+------+------|
      * | LSft | ; :  | q Q  | j J  | k K  | x X  | ,------. ,------. | b B  | m M  | w W  | v V  | z Z  | RSft |
-     * `-----------------------------------------' | LGui | | RGui | `-----------------------------------------'
+     * `-----------------------------------------' | G_Ent| | C_Tab| `-----------------------------------------'
      *                               ,-------------+------| |------+-------------.
      *                               | Bksp |OS(L4)| C_Tab| | G_Ent|OS(L2)| Spce |
      *                               `--------------------' `--------------------'
@@ -115,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         OS_LALT, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX,          XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX,
         TT_RST,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_ESC,           KC_ESC,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    TT_QW,
         CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_TAB,           KC_TAB,  KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
-        KC_LSFT, LSFT_SC, LALT__Q, LCTL__J, LGUI__K, KC_X,       KC_LGUI,   KC_RGUI,     KC_B,    RGUI__M, RCTL__W, LALT__V, RSFT__Z, KC_RSFT,
+        KC_LSFT, LSFT_SC, LALT__Q, LCTL__J, LGUI__K, KC_X,       GUI_ENT,   CTL_TAB,     KC_B,    RGUI__M, RCTL__W, LALT__V, RSFT__Z, KC_RSFT,
                                                KC_BSPC, OS_NAVD, CTL_TAB,   GUI_ENT, OS_PUND, KC_SPC
     ),
 
@@ -128,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | C_Esc| a A  | s S  | d D  | f F  | g G  | Tab  |     | Tab  | h H  | j J  | k K  | l L  | ; :  | ' "  |
      * |------+------+------+------+------+------+------'     `------+------+------+------+------+------+------|
      * | LSft | z Z  | x X  | c C  | v V  | b B  | ,------. ,------. | n N  | m M  | , <  | . >  | / ?  | RSft |
-     * `-----------------------------------------' | LGui | | RGui | `--+---+--+-------------------------------'
+     * `-----------------------------------------' | G_Ent| | C_Tab| `--+---+--+-------------------------------'
      *                               ,-------------+------| |------+-------------'
      *                               | Bksp |OS(L5)| C_Tab| | G_Ent|OS(L3)| Spce |
      *                               `--------------------' `--------------------'
@@ -150,17 +152,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | C_Esc|      |Vol Dn| Mute |Vol Up| \    | Tab  |     | Tab  | /    | -    | _    | (    | )    | C_Esc|
      * |------+------+------+------+------+------+------'     `------+------+------+------+------+------+------|
      * | LSft | Undo | Cut  | Copy | Paste|      | ,------. ,------. | ~    | =    | +    | |    | ?    | RSft |
-     * `-----------------------------------------' | LGui | | RGui | `-----------------------------------------'
+     * `-----------------------------------------' | \    | | /    | `-----------------------------------------'
      *                               ,-------------+------' `------+-------------.
-     *                               | Spce | ~L4  | G_Ent| | C_Del|OS(L4)| Bksp |
+     *                               | Del  | ~L4  | G_Ent| | C_Tab|OS(L4)| Spce |
      *                               `--------------------' `--------------------'
      */
     [_PUNCT_DV] = LAYOUT_centromere_plus( /* punctpad, dvorak in keyboard, qwerty in OS */
         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX,          XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
         XXXXXXX, KC_EJCT, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, KC_ESC,           KC_ESC,  KC_GRV,  KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_F12,
         _______, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, KC_BSLS, KC_TAB,           KC_TAB,  KC_SLSH, KC_MINS, KC_UNDS, KC_LPRN, KC_RPRN, CTL_ESC,
-        _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), XXXXXXX,    KC_LGUI,   KC_RGUI,     KC_TILD, KC_EQL,  KC_PLUS, KC_PIPE, KC_QUES, _______,
-                                               KC_SPC,  M_NAVDV, GUI_ENT,   CTL_DEL, OS_NAVD, KC_BSPC
+        _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), XXXXXXX,    KC_BSLS,   KC_SLSH,     KC_TILD, KC_EQL,  KC_PLUS, KC_PIPE, KC_QUES, _______,
+                                               KC_DEL,  M_NAVDV, GUI_ENT,   CTL_TAB, OS_NAVD, KC_SPC
     ),
 
     /* punctpad, qwerty in keyboard, dvorak in OS
@@ -172,16 +174,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | C_Esc|      |Vol Dn| Mute |Vol Up| \    | Tab  |     | Tab  | [    | '    | "    | (    | )    | C_Esc|
      * |------+------+------+------+------+------+------'     `------+------+------+------+------+------+------|
      * | LSft | Undo | Cut  | Copy | Paste|      | ,------. ,------. | ~    | ]    | }    | |    | {    | RSft |
-     * `-----------------------------------------' | LGui | | RGui | `-----------------------------------------'
+     * `-----------------------------------------' | \    | | [    | `-----------------------------------------'
      *                               ,-------------+------| |------+-------------.
-     *                               | Spce | ~L5  | G_Ent| | C_Del|OS(L5)| Bksp |
+     *                               | Del  | ~L5  | G_Ent| | C_Tab|OS(L5)| Spce |
      *                               `--------------------' `--------------------'
      */
     [_PUNCT_QW] = LAYOUT_centromere_plus( /* punctpad, qwerty in keyboard, dvorak in OS */
         _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,          _______, _______, KC_MINS, KC_EQL,  KC_UNDS, KC_PLUS, _______,
         _______, _______, _______, _______, _______, _______, _______,          _______, KC_LBRC, KC_QUOT, KC_DQUO, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,    _______,    _______,    _______, KC_RBRC, KC_RCBR, _______, KC_LCBR, _______,
+        _______, _______, _______, _______, _______, _______,    _______,    KC_LBRC,    _______, KC_RBRC, KC_RCBR, _______, KC_LCBR, _______,
                                                _______, M_NAVQW, _______,    _______, OS_NAVQ, _______
     ),
 
@@ -193,18 +195,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------|     |------+------+------+------+------+------+------|
      * | C_Esc| Home | Left | Down | Rght | End  | Tab  |     | Tab  | /    | Left | Down | Up   | Rght | C_Esc|
      * |------+------+------+------+------+------+------'     `------+------+------+------+------+------+------|
-     * | LSft |      |      |      | PgDn | Tab  | ,------. ,------. | ~    | -    | _    | |    | ?    | RSft |
-     * `-----------------------------------------' | LGui | | RGui | `-----------------------------------------'
+     * | LSft |      |      |      | PgDn | Del  | ,------. ,------. | ~    | Home | PgDn | PgUp | End  | RSft |
+     * `-----------------------------------------' | \    | | /    | `-----------------------------------------'
      *                               ,-------------+------| |------+-------------.
-     *                               | Del  |OS(L2)| G_Ent| | C_Del| ~L2  | Bksp |
+     *                               | Spce |OS(L2)| G_Ent| | C_Del| ~L2  | Bksp |
      *                               `--------------------' `--------------------'
      */
     [_NAV_DV] = LAYOUT_centromere_plus( /* nav, dvorak in keyboard, qwerty in OS */
         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX,          XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
         XXXXXXX, C_HOME,  XXXXXXX, KC_UP,   KC_PGUP, C_END,   KC_ESC,           KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12,
         _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_TAB,           KC_TAB,  KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_TAB,     KC_LGUI,    KC_RGUI,    KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
-                                               KC_DEL,  OS_PUND, GUI_ENT,    CTL_DEL, M_PUNDV, KC_BSPC
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_DEL,     KC_BSLS,    KC_SLSH,    KC_TILD, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
+                                               KC_SPC,  OS_PUND, GUI_ENT,    CTL_DEL, M_PUNDV, KC_BSPC
     ),
 
     /* nav, qwerty in keyboard, dvorak in OS
@@ -215,17 +217,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------|     |------+------+------+------+------+------+------|
      * | C_Esc| Home | Left | Down | Rght | End  | Tab  |     | Tab  | [    | Left | Down | Up   | Rght | C_Esc|
      * |------+------+------+------+------+------+------'     `------+------+------+------+------+------+------|
-     * | LSft |      |      |      | PgDn | Tab  | ,------. ,------. | ~    | '    | "    | |    | {    | RSft |
-     * `-----------------------------------------' | LGui | | RGui | `-----------------------------------------'
+     * | LSft |      |      |      | PgDn | Del  | ,------. ,------. | ~    | Home | PgDn | PgUp | End  | RSft |
+     * `-----------------------------------------' | \    | | [    | `-----------------------------------------'
      *                               ,-------------+------| |------+-------------.
-     *                               | Del  |OS(L3)| G_Ent| | C_Del| ~L3  | Bksp |
+     *                               | Spce |OS(L3)| G_Ent| | C_Del| ~L3  | Bksp |
      *                               `--------------------' `--------------------'
      */
     [_NAV_QW] = LAYOUT_centromere_plus( /* nav, qwerty in keyboard, dvorak in OS */
         _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______,          _______, _______, KC_LPRN, KC_RPRN, KC_EQL,  KC_PLUS, _______,
         _______, _______, _______, _______, _______, _______, _______,          _______, KC_LBRC, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______,    _______,    _______,    _______, KC_QUOT, KC_DQUO, KC_PIPE, KC_LCBR, _______,
+        _______, _______, _______, _______, _______, _______,    _______,    KC_LBRC,    _______, _______, _______, _______, _______, _______,
                                                _______, OS_PUNQ, _______,    _______, M_PUNQW, _______
     ),
 
@@ -238,17 +240,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * | C_Esc| Np = | Np 6 | Np 5 | Np 4 |      | Tab  |     | Tab  |      | Np 4 | Np 5 | Np 6 | Np + | Paus |
      * |------+------+------+------+------+------+------'     `------+------+------+------+------+------+------|
      * | LSft | Np . | Np 3 | Np 2 | Np 1 | Np 0 | ,------. ,------. | Np 0 | Np 1 | Np 2 | Np 3 | Np . | RSft |
-     * `-----------------------------------------' | LGui | | RGui | `-----------------------------------------'
+     * `-----------------------------------------' | G_Ent| | C_Tab| `-----------------------------------------'
      *                               ,-------------+------| |------+-------------.
-     *                               | Bksp |Np Ent| C_Del| |Np Ent| Np 0 | Spce |
+     *                               | Bksp | Np 0 |Np Ent| |Np Ent| Np 0 | Spce |
      *                               `--------------------' `--------------------'
      */
     [_RESET_NUMPAD] = LAYOUT_centromere_plus( /* reset, and numpad */
         XXXXXXX, KC_PMNS, KC_PAST, KC_PSLS, KC_NLCK, RESET,   RESET,            XXXXXXX, KC_NLCK, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, KC_SLCK,
         _______, KC_PPLS, KC_P9,   KC_P8,   KC_P7,   XXXXXXX, KC_ESC,           KC_ESC,  XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSCR,
-        CTL_ESC, KC_PEQL, KC_P6,   KC_P5,   KC_P4,   XXXXXXX, KC_TAB,           KC_TAB,  XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
-        _______, KC_PDOT, KC_P3,   KC_P2,   KC_P1,   KC_P0,      KC_LGUI,    KC_RGUI,    KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
-                                               KC_BSPC, KC_PENT, CTL_DEL,    KC_PENT, KC_P0,   KC_SPC
+        _______, KC_PEQL, KC_P6,   KC_P5,   KC_P4,   XXXXXXX, KC_TAB,           KC_TAB,  XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
+        _______, KC_PDOT, KC_P3,   KC_P2,   KC_P1,   KC_P0,      GUI_ENT,    CTL_TAB,    KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
+                                               KC_BSPC, KC_P0,   KC_PENT,    KC_PENT, KC_P0,   KC_SPC
     ),
 
 //    /* one-handed dvorak.

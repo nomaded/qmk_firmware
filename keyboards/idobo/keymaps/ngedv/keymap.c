@@ -64,6 +64,7 @@
 #define CTL_ENT CTL_T(KC_ENT)                   // Ctrl on hold, Enter on tap
 #define CTL_ESC CTL_T(KC_ESC)                   // Ctrl on hold, Esc on tap
 #define CTL_TAB CTL_T(KC_TAB)                   // Ctrl on hold, Tab on tap
+#define CTL_DEL LCTL_T(KC_DEL)                  // Ctrl on hold, Delete on tap
 #define GUI_ENT GUI_T(KC_ENT)                   // Gui on hold, Enter on tap
 #define GUI_TAB GUI_T(KC_TAB)                   // Gui on hold, Tab on tap
 #define C_HOME LCTL(KC_HOME)                    // Go to top of page
@@ -103,19 +104,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | +L6  | ' "  | , <  | . >  | p P  | y Y  | Esc  |      | Esc  | f F  | g G  | c C  | r R  | l L  | +L1  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc| a A  | o O  | e E  | u U  | i I  | LGui |      | RGui | d D  | h H  | t T  | n N  | s S  | - _  |
+     * | C_Esc| a A  | o O  | e E  | u U  | i I  | Tab  |      | Tab  | d D  | h H  | t T  | n N  | s S  | - _  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft | ; :  | q Q  | j J  | k K  | x X  | Tab  |      | Tab  | b B  | m M  | w W  | v V  | z Z  | RSft |
+     * | LSft | ; :  | q Q  | j J  | k K  | x X  | G_Ent|      | C_Tab| b B  | m M  | w W  | v V  | z Z  | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | Del  | Bksp |OS(L4)| C_Tab|      | G_Ent|OS(L2)| Spce | RAlt |      |      |      |
+     * |      |      |      |      | Bksp |OS(L4)| C_Tab|      | G_Ent|OS(L2)| Spce |      |      |      |      |
      * `-----------------------------------------+------+------+------------------------------------------------'
      */
     [_DVORAK] = LAYOUT_ortho_5x15( /* default, dvorak in keyboard, qwerty in OS */
         OS_LALT, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    XXXXXXX, XXXXXXX, XXXXXXX, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX,
         TT_RST,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_ESC,  XXXXXXX, KC_ESC,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    TT_QW,
-        CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_LGUI, XXXXXXX, KC_RGUI, KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
-        KC_LSFT, LSFT_SC, LALT__Q, LCTL__J, LGUI__K, KC_X,    KC_TAB,  XXXXXXX, KC_TAB,  KC_B,    RGUI__M, RCTL__W, LALT__V, RSFT__Z, KC_RSFT,
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  KC_BSPC, OS_NAVD, CTL_TAB, XXXXXXX, GUI_ENT, OS_PUND, KC_SPC,  KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX
+        CTL_ESC, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_TAB,  XXXXXXX, KC_TAB,  KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
+        KC_LSFT, LSFT_SC, LALT__Q, LCTL__J, LGUI__K, KC_X,    GUI_ENT, XXXXXXX, CTL_TAB, KC_B,    RGUI__M, RCTL__W, LALT__V, RSFT__Z, KC_RSFT,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, OS_NAVD, CTL_TAB, XXXXXXX, GUI_ENT, OS_PUND, KC_SPC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     /* qwerty in keyboard, dvorak in OS
@@ -124,11 +125,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | +L6  | q Q  | w W  | e E  | r R  | t T  | Esc  |      | Esc  | y Y  | u U  | i I  | o O  | p P  | -L1  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc| a A  | s S  | d D  | f F  | g G  | LGui |      | RGui | h H  | j J  | k K  | l L  | ; :  | ' "  |
+     * | C_Esc| a A  | s S  | d D  | f F  | g G  | Tab  |      | Tab  | h H  | j J  | k K  | l L  | ; :  | ' "  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft | z Z  | x X  | c C  | v V  | b B  | Tab  |      | Tab  | n N  | m M  | , <  | . >  | / ?  | RSft |
+     * | LSft | z Z  | x X  | c C  | v V  | b B  | G_Ent|      | C_Tab| n N  | m M  | , <  | . >  | / ?  | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | Del  | Bksp |OS(L5)| C_Tab|      | G_Ent|OS(L3)| Spce | RAlt |      |      |      |
+     * |      |      |      |      | Bksp |OS(L5)| C_Tab|      | G_Ent|OS(L3)| Spce |      |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_QWERTY] = LAYOUT_ortho_5x15( /* qwerty in keyboard, dvorak in OS */
@@ -145,19 +146,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * |      | Eject| Prev | Play | Next |      | Esc  |      | Esc  | `    | [    | ]    | {    | }    | F12  |
      a |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc|      |Vol Dn| Mute |Vol Up| \    | LGui |      | RGui | /    | -    | _    | (    | )    | C_Esc|
+     * | C_Esc|      |Vol Dn| Mute |Vol Up| \    | Tab  |      | Tab  | /    | -    | _    | (    | )    | C_Esc|
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | LSft | Undo | Cut  | Copy | Paste|      | \    |      | /    | ~    | =    | +    | |    | ?    | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | G_Ent| Spce | ~L4  | G_Ent|      | C_Tab|OS(L4)| BkSp | Del  |      |      |      |
+     * |      |      |      |      | Del  | ~L4  | G_Ent|      | C_Tab|OS(L4)| Spce |      |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_PUNCT_DV] = LAYOUT_ortho_5x15( /* punctpad, dvorak in keyboard, qwerty in OS */
         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
         XXXXXXX, KC_EJCT, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, KC_ESC,  XXXXXXX, KC_ESC,  KC_GRV,  KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_F12,
-        _______, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, KC_BSLS, KC_LGUI, XXXXXXX, KC_RGUI, KC_SLSH, KC_MINS, KC_UNDS, KC_LPRN, KC_RPRN, CTL_ESC,
+        _______, XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, KC_BSLS, KC_TAB,  XXXXXXX, KC_TAB,  KC_SLSH, KC_MINS, KC_UNDS, KC_LPRN, KC_RPRN, CTL_ESC,
         _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), XXXXXXX, KC_BSLS, XXXXXXX, KC_SLSH, KC_TILD, KC_EQL,  KC_PLUS, KC_PIPE, KC_QUES, _______,
-        XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC,  M_NAVDV, GUI_ENT, XXXXXXX, CTL_TAB, OS_NAVD, KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  M_NAVDV, GUI_ENT, XXXXXXX, CTL_TAB, OS_NAVD, KC_SPC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
      /* punctpad, qwerty in keyboard, dvorak in OS
@@ -166,11 +167,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * |      | Eject| Prev | Play | Next |      | Esc  |      | Esc  | `    | -    | =    | _    | +    | F12  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc|      |Vol Dn| Mute |Vol Up| \    | LGui |      | RGui | [    | '    | "    | (    | )    | C_Esc|
+     * | C_Esc|      |Vol Dn| Mute |Vol Up| \    | Tab  |      | Tab  | [    | '    | "    | (    | )    | C_Esc|
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * | LSft | Undo | Cut  | Copy | Paste|      | \    |      | [    | ~    | ]    | }    | |    | {    | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | G_Ent| Spce | ~L5  | G_Ent|      | C_Tab|OS(L5)| BkSp | Del  |      |      |      |
+     * |      |      |      |      | Del  | ~L5  | G_Ent|      | C_Tab|OS(L5)| Spce |      |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_PUNCT_QW] = LAYOUT_ortho_5x15( /* punctpad, qwerty in keyboard, dvorak in OS */
@@ -187,19 +188,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |C(Home)      | Up   | PgUp |C(End)| Esc  |      | Esc  | `    | (    | )    | ]    | }    | F12  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc| Home | Left | Down | Rght | End  | LGui |      | RGui | /    | Left | Down | Up   | Rght | C_Esc|
+     * | C_Esc| Home | Left | Down | Rght | End  | Tab  |      | Tab  | /    | Left | Down | Up   | Rght | C_Esc|
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft |      |      |      | PgDn | Tab  | \    |      | /    | ~    | -    | _    | |    | ?    | RSft |
+     * | LSft |      |      |      | PgDn | Del  | \    |      | /    | ~    | Home | PgDn | PgUp | End  | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | G_Ent| Spce |OS(L2)| G_Ent|      | C_Tab| ~L2  | BkSp | Del  |      |      |      |
+     * |      |      |      |      | Spce |OS(L2)| G_Ent|      | C_Del| ~L2  | BkSp |      |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_NAV_DV] = LAYOUT_ortho_5x15( /* nav, dvorak in keyboard, qwerty in OS */
         XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   XXXXXXX, XXXXXXX, XXXXXXX, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
         XXXXXXX, C_HOME,  XXXXXXX, KC_UP,   KC_PGUP, C_END,   KC_ESC,  XXXXXXX, KC_ESC,  KC_GRV,  KC_LPRN, KC_RPRN, KC_RBRC, KC_RCBR, KC_F12,
-        _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_LGUI, XXXXXXX, KC_RGUI, KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_TAB,  KC_BSLS, XXXXXXX, KC_SLSH, KC_TILD, KC_MINS, KC_UNDS, KC_PIPE, KC_QUES, _______,
-        XXXXXXX, XXXXXXX, XXXXXXX, GUI_ENT, KC_SPC,  OS_PUND, GUI_ENT, XXXXXXX, CTL_TAB, OS_PUND, KC_BSPC, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX
+        _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_TAB,  XXXXXXX, KC_TAB,  KC_SLSH, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, KC_DEL,  KC_BSLS, XXXXXXX, KC_SLSH, KC_TILD, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SPC,  OS_PUND, GUI_ENT, XXXXXXX, CTL_DEL, OS_PUND, KC_BSPC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     /* nav, qwerty in keyboard, dvorak in OS
@@ -208,40 +209,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
      * |      |C(Hom)|      | Up   | PgUp |C(End)| Esc  |      | Esc  | `    | (    | )    | =    | +    | F12  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc| Home | Left | Down | Rght | End  | LGui |      | RGui | [    | Left | Down | Up   | Rght | C_Esc|
+     * | C_Esc| Home | Left | Down | Rght | End  | Tab  |      | Tab  | [    | Left | Down | Up   | Rght | C_Esc|
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft |      |      |      | PgDn | Tab  | \    |      | [    | ~    | '    | "    | |    | {    | RSft |
+     * | LSft |      |      |      | PgDn | Del  | \    |      | [    | ~    | Home | PgDn | PgUp | End  | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | G_Ent| Spce |OS(L3)| G_Ent|      | C_Tab| ~L3  | BkSp | Del  |      |      |      |
+     * |      |      |      |      | Spce |OS(L3)| G_Ent|      | C_Del| ~L3  | BkSp |      |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_NAV_QW] = LAYOUT_ortho_5x15( /* nav, qwerty in keyboard, dvorak in OS */
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LPRN, KC_RPRN, KC_EQL,  KC_PLUS, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LBRC, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, KC_LBRC, _______, KC_QUOT, KC_DQUO, KC_PIPE, KC_LCBR, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, KC_LBRC, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, OS_PUNQ, _______, _______, _______, M_PUNQW, _______, _______, _______, _______, _______
     ),
 
     /* reset and numpad
      * ,--------------------------------------------------------------------------------------------------------.
-     * |      |      |Vol Dn|Vol Up| Mute | Rst  |RGBTOG|RGBMOD|RGB MT| NmLk |      | Np / | Np * | Np - | SLck |
+     * |      | Np - | Np * | Np / | NmLk | Reset|RGBTOG|RGBMOD|RGB MT| NmLk |      | Np / | Np * | Np - | SLck |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | -L6  |      |      | Up   |      |      |RGB MP|RGB MB|RGB MR|      | Np 7 | Np 8 | Np 9 | Np + | PScr |
+     * | -L6  | Np + | Np 9 | Np 8 | Np 7 |      |RGB MP|RGB MB|RGB MR|      | Np 7 | Np 8 | Np 9 | Np + | PScr |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | C_Esc|      | Left | Down | Rght |      |RGB MK|RGB MX|RGB MG|      | Np 4 | Np 5 | Np 6 | Np + | Paus |
+     * | C_Esc| Np = | Np 6 | Np 5 | Np 4 |      |RGB MK|RGB MX|RGB MG|      | Np 4 | Np 5 | Np 6 | Np + | Paus |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * | LSft |      |      |      |      |      |      |      |      | Np 0 | Np 1 | Np 2 | Np 3 | Np . | RSft |
+     * | LSft | Np . | Np 3 | Np 2 | Np 1 | Np 0 | G_Ent|      | C_Tab| Np 0 | Np 1 | Np 2 | Np 3 | Np . | RSft |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
-     * |      |      |      | Del  | Bksp |      | C_Tab|      |Np Ent| Np 0 | Spce | G_Ent|      |      |      |
+     * |      |      |      |      | Bksp | Np 0 |Np Ent|      |Np Ent| Np 0 | Spce |      |      |      |      |
      * `--------------------------------------------------------------------------------------------------------'
      */
     [_RESET_NUMPAD] = LAYOUT_ortho_5x15( /* reset, and numpad */
-        XXXXXXX, XXXXXXX, KC_VOLD, KC_VOLU, KC_MUTE, RESET,   RGB_TOG, RGB_MOD, RGB_M_T, KC_NLCK, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, KC_SLCK,
-        _______, XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSCR,
-        _______, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, RGB_M_K, RGB_M_X, RGB_M_G, XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  KC_BSPC, XXXXXXX, CTL_TAB, XXXXXXX, KC_PENT, KC_P0,   KC_SPC,  GUI_ENT, XXXXXXX, XXXXXXX, XXXXXXX
+        XXXXXXX, KC_PMNS, KC_PAST, KC_PSLS, KC_NLCK, RESET,   RGB_TOG, RGB_MOD, RGB_M_T, KC_NLCK, XXXXXXX, KC_PSLS, KC_PAST, KC_PMNS, KC_SLCK,
+        _______, KC_PPLS, KC_P9,   KC_P8,   KC_P7,   XXXXXXX, RGB_M_P, RGB_M_B, RGB_M_R, XXXXXXX, KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_PSCR,
+        _______, KC_PEQL, KC_P6,   KC_P5,   KC_P4,   XXXXXXX, RGB_M_K, RGB_M_X, RGB_M_G, XXXXXXX, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, KC_PAUS,
+        _______, KC_PDOT, KC_P3,   KC_P2,   KC_P1,   KC_P0,   GUI_ENT, XXXXXXX, CTL_TAB, KC_P0,   KC_P1,   KC_P2,   KC_P3,   KC_PDOT, _______,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, KC_P0,   KC_PENT, XXXXXXX, KC_PENT, KC_P0,   KC_SPC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
     ),
 
     //
