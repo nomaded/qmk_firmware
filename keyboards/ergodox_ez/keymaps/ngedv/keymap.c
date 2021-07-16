@@ -97,8 +97,7 @@
 // };
 
 enum combos {
-    LR_CAPS,
-    EU_GUI
+    LR_CAPS
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -456,10 +455,8 @@ void matrix_scan_user(void) {
  * because my own function was not behaving as expected with mod-tap keys
  */
 const uint16_t PROGMEM lsftrsft_combo[] = {KC_LSFT, KC_RSFT, COMBO_END};
-const uint16_t PROGMEM eu_gui_combo[] = {KC_E, KC_U, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
-    [LR_CAPS] = COMBO(lsftrsft_combo, KC_CAPS),
-    [EU_GUI] = COMBO(eu_gui_combo, KC_LGUI)
+    [LR_CAPS] = COMBO(lsftrsft_combo, KC_CAPS)
 };
 
 /* Code to cancel out oneshot state with escape key. Code copied from:
